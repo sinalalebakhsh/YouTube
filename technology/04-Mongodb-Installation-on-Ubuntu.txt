@@ -1,0 +1,30 @@
+
+
+1-Terminal: dpkg --print-architecture
+
+2-Download: https://www.mongodb.com/try/download/shell
+
+3-Browser: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#std-label-install-mdb-community-ubuntu
+
+4-Terminal: sudo apt-get install gnupg curl
+
+5-Terminal: 
+    curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
+    sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+    --dearmor
+
+6-Terminal: echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+7-Terminal: sudo apt-get update
+
+8-Terminal: sudo apt-get install -y mongodb-org
+
+9- Restart Ubuntu.
+
+10-Terminal: and don't close(Ctrl+C):
+    sudo mongod --config /etc/mongod.conf
+
+* for search -> locate mongod.conf
+11-Another terminal:
+    mongosh
+
