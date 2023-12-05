@@ -1,0 +1,36 @@
+Source:
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
+
+
+
+1-  sudo apt update
+2-  sudo apt install nodejs
+3-  node -v
+Output:
+    v10.19.0
+
+
+4- sudo apt install npm
+
+
+
+
+
+Removing Node.js:
+    1-  sudo apt remove nodejs
+    2-  sudo apt purge nodejs
+    3-  nvm current
+If the version you are targeting is not the current active version, you can run:
+    4-nvm uninstall node_version
+Output
+    Uninstalled node node_version
+
+If the version you would like to remove is the current active version, 
+you first need to deactivate nvm to enable your changes:
+    5-  nvm deactivate
+
+
+
+
+
+
