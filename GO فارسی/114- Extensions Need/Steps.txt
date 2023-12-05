@@ -1,5 +1,6 @@
 Extenssion Installation
 recommendations:
+https://github.com/BeardedBear/bearded-icons
     beardedbear-beardedicons
     beardedbear-beardedtheme
 
