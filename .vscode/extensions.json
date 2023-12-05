@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+        "beardedbear.beardedicons",
+        "beardedbear.beardedtheme",
+        "ms-python.black-formatter",
+        "streetsidesoftware.code-spell-checker",
+        "ms-azuretools.vscode-docker",
+        "golang.go",
+        "goplus.gop",
+        "mongodb.mongodb-vscode",
+        "ms-python.python",
+        "davidanson.vscode-markdownlint",
+        "editorconfig.editorconfig",
+        "tamasfe.even-better-toml"
+    ]
+}

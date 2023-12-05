@@ -1,0 +1,36 @@
+Extenssion Installation
+recommendations:
+    beardedbear-beardedicons
+    beardedbear-beardedtheme
+
+https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter
+    ms-python-black-formatter
+
+https://streetsidesoftware.com/
+    streetsidesoftware-code-spell-checker
+
+https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker
+    ms-azuretools-vscode-docker
+
+https://marketplace.visualstudio.com/items?itemName=golang.Go
+    golang-go
+
+https://marketplace.visualstudio.com/items?itemName=goplus.gop
+    goplus-gop
+
+https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode
+    mongodb-mongodb-vscode
+
+https://marketplace.visualstudio.com/items?itemName=ms-python.python
+    ms-python-python
+
+https://github.com/DavidAnson/markdownlint
+    markdownlint
+
+https://editorconfig.org/
+    EditorConfig for VS Code
+
+https://taplo.tamasfe.dev/
+    Even Better TOML
+
+
