@@ -1,1 +1,21 @@
 116- Gitlab about create GO web app
+
+
+1- https://gitlab.com/projects/new
+
+after create repo
+2- Alarm!  
+"You can't push or pull repositories using SSH until you add an SSH key to your profile. "
+
+3- 
+ssh-keygen -t rsa -C "YourEmaillikeMinaLale@gmail.com" -b 4096
+                   |
+                   |-> Capital
+
+4- cat ~/.ssh/id_rsa.pub | clip
+
+5- Copy that
+
+6- in gitlab > settings > SSH keys > Paste clip board in that box
+
+7- 
