@@ -1,3 +1,7 @@
+Source for you:
+	
+	https://github.com/sinalalebakhsh/DjangoImages/tree/main/01-Basic/121-Django/Practice_01-30
+
 *BEFORE: In this Image use virtualenv.
 
 1- 
