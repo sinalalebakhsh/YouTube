@@ -6,53 +6,67 @@
 ####              ############  
 #### ############ ############ 
 
-
-1-               ------------------------------------------------------------------------- 
+================================================================================================================
+1-
 python3.12 -m venv venv
 python3.10 -m venv venv
 
 
 
-2-               -------------------------------------------------------------------------
+
+================================================================================================================
+2-
 source ./venv/bin/activate
 
 
 
-3-               ------------------------------------------------------------------------- 
+
+
+================================================================================================================
+3-
 pip install django
 
 
 
 
 
-4-                ------------------------------------------------------------------------- 
+
+================================================================================================================
+4-
 pip freeze > requirements.txt
 
 
 
-
-5-                ------------------------------------------------------------------------- 
+================================================================================================================
+5-
 django-admin startproject config .
 
 
 
-6-               ------------------------------------------------------------------------- 
+
+================================================================================================================
+6-
 python manage.py startapp accounts
 
 
 
-7- Add "accounts" in settings.py/--> INSTALLED_APPS -------------------------------------------------------------------------
+
+================================================================================================================
+7- Add "accounts" in settings.py/--> INSTALLED_APPS
 'accounts',
 
 
 
 
-8- In END > config/settings.py   -------------------------------------------------------------------------
+================================================================================================================
+8- In END > config/settings.py
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 
 
-9- Create CustomUser in accounts/models.py  -------------------------------------------------------------------------
+
+================================================================================================================
+9- Create CustomUser in accounts/models.py
 from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     age = models.IntegerField(null=True, blank=True)
@@ -60,19 +74,24 @@ class CustomUser(AbstractUser):
 
 
 
-10- Create forms.py file in accounts   -------------------------------------------------------------------------
+
+================================================================================================================
+10- Create forms.py file in accounts
 forms.py
 
 
 
 
-11- In forms.py create CustomUserCreationForm class  -------------------------------------------------------------------------
+================================================================================================================
+11- In forms.py create CustomUserCreationForm class
 
 
 
 
 
-12- In forms.py create CustomUserChangeForm class -------------------------------------------------------------------------
+
+================================================================================================================
+12- In forms.py create CustomUserChangeForm class
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
 class CustomUserCreationForm(UserCreationForm):
@@ -89,7 +108,9 @@ class CustomUserChangeForm(UserChangeForm):
 
 
 
-13- In accounts/admin.py create CustomUserAdmin class   -------------------------------------------------------------------------
+
+================================================================================================================
+13- In accounts/admin.py create CustomUserAdmin class
 from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 from .models import CustomUser
@@ -102,7 +123,10 @@ admin.site.register(CustomUser, CustomUserAdmin)
 
 
 
-14- In Terminal   -------------------------------------------------------------------------
+
+
+================================================================================================================
+14- In Terminal
 python manage.py makemigrations accounts
 
 Output:
@@ -113,7 +137,9 @@ Output:
 
 
 
-15-In Terminal   -------------------------------------------------------------------------
+
+================================================================================================================
+15-In Terminal
 python manage.py migrate
 
 Output:
@@ -143,65 +169,87 @@ Output:
 
 
 
-16- Create super user   -------------------------------------------------------------------------
+
+================================================================================================================
+16- Create super user
 python manage.py createsuperuser
 
 
 
-17- Run server  -------------------------------------------------------------------------
+
+================================================================================================================
+17- Run server
 python manage.py runserver
 
 
 
-18- Check browser user > admin user details > shouldn't be age shows = True  -------------------------------------------------------------------------
+
+================================================================================================================
+18- Check browser user > admin user details > shouldn't be age shows = True
 
 
 
 
-19- In admin.py add fieldsets in CustomUserAdmin class -------------------------------------------------------------------------
+
+================================================================================================================
+19- In admin.py add fieldsets in CustomUserAdmin class
 fieldsets = UserAdmin.fieldsets + ((None, {'fields': ('age', )}),) 
 
 
 
 
 
-20- Refresh browser / Check in end of Link, age should be shows -------------------------------------------------------------------------
+================================================================================================================
+20- Refresh browser / Check in end of Link, age should be shows
 http://127.0.0.1:8000/admin/accounts/customuser/1/change/ 
 
 
 
 
-21- In browser > admin panel > ADD USER button => shouldn't be age  -------------------------------------------------------------------------
+
+================================================================================================================
+21- In browser > admin panel > ADD USER button => shouldn't be age
 http://127.0.0.1:8000/admin/accounts/customuser/add/
 
 
 
 
-22- In admin.py add add_fieldsets, in CustomUserAdmin class   -------------------------------------------------------------------------
+
+================================================================================================================
+22- In admin.py add add_fieldsets, in CustomUserAdmin class
 add_fieldsets = UserAdmin.add_fieldsets + ((None, {'fields': ('age', )}),) 
 
 
 
 
-23- Refresh browser > check 'age' field, should be added.  -------------------------------------------------------------------------
+
+================================================================================================================
+23- Refresh browser > check 'age' field, should be added.
 http://127.0.0.1:8000/admin/accounts/customuser/add/
 
 
 
 
-24- In admin.py add list_display in CustomUserAdmin class  -------------------------------------------------------------------------
+
+
+================================================================================================================
+24- In admin.py add list_display in CustomUserAdmin class
 list_display = ['username', 'email', 'age', 'is_staff'] 
 
 
 
 
-25- Refresh browser > check 'age' field, should be added.  -------------------------------------------------------------------------
+
+================================================================================================================
+25- Refresh browser > check 'age' field, should be added.
 http://127.0.0.1:8000/admin/accounts/customuser/
 
 
 
 
-26- In config/urls.py create > in urlpatterns   -------------------------------------------------------------------------
+
+================================================================================================================
+26- In config/urls.py create > in urlpatterns
 from django.urls import path, include
 # ...ATTENTION.. here is another python code
 path('accounts/', include('django.contrib.auth.urls')), 
@@ -209,17 +257,25 @@ path('accounts/', include('django.contrib.auth.urls')),
 
 
 
-27- In config/urls.py create > in urlpatterns   -------------------------------------------------------------------------
+
+================================================================================================================
+27- In config/urls.py create > in urlpatterns
 path('accounts/', include('accounts.urls')),
 
 
 
 
-28- Create urls.py in accounts directory  -------------------------------------------------------------------------
+
+
+================================================================================================================
+28- Create urls.py in accounts directory
 
 
 
-29- In accounts/urls >    -------------------------------------------------------------------------
+
+
+================================================================================================================
+29- In accounts/urls >
 from django.urls import path
 urlpatterns = [
     # path('signup/', views.SignUpView.as_view(), name='signup'),
@@ -228,18 +284,26 @@ urlpatterns = [
 
 
 
-30- In current directory project create templates/registration/login.html  -------------------------------------------------------------------------
+
+================================================================================================================
+30- In current directory project create templates/registration/login.html
 templates/registration/login.html
 
 
 
-31- In current directory project create templates/_base.html  -------------------------------------------------------------------------
+
+
+================================================================================================================
+31- In current directory project create templates/_base.html
 _base.html
 
 
 
 
-32- Add these in _base.html  -------------------------------------------------------------------------
+
+
+================================================================================================================
+32- Add these in _base.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -255,7 +319,9 @@ _base.html
 
 
 
-33- Add these in login.html  -------------------------------------------------------------------------
+
+================================================================================================================
+33- Add these in login.html
 {% extends '_base.html' %}
 {% block page_title %}
 Login-eingeben
@@ -271,49 +337,64 @@ Login-eingeben
 
 
 
-34- In Terminal  -------------------------------------------------------------------------
+
+================================================================================================================
+34- In Terminal
 python manage.py runserver
 
 
 
 
-35- Go to this Link , Check in browser > should get this error > TemplateDoesNotExist at /accounts/login/ -------------------------------------------------------------------------
+
+================================================================================================================
+35- Go to this Link , Check in browser > should get this error > TemplateDoesNotExist at /accounts/login/ -
 http://127.0.0.1:8000/accounts/login/
 
 
 
 
-36- In config/settings.py add in TEMPLATES > in 'DIRS'  =>  [str(BASE_DIR.joinpath('templates'))],  --------------------------------------------------------
+================================================================================================================
+36- In config/settings.py add in TEMPLATES > in 'DIRS'  =>  [str(BASE_DIR.joinpath('templates'))],
 
 
 
-37- In config/settings.py add  -------------------------------------------------------------------------
+
+================================================================================================================
+37- In config/settings.py add
 LOGIN_REDIRECT_URL = 'home'
 
 
-
-38- In config/settings.py add   -------------------------------------------------------------------------
+================================================================================================================
+38- In config/settings.py add
 LOGOUT_REDIRECT_URL = 'home'
 
 
 
-39- In config/urls.py import this  -------------------------------------------------------------------------
+
+================================================================================================================
+39- In config/urls.py import this
 from django.views.generic.base import TemplateView
 
 
 
-40- In config/urls.py add this path  -------------------------------------------------------------------------
+
+================================================================================================================
+40- In config/urls.py add this path
 path('home/', TemplateView.as_view(template_name='home.html'), name='home'),
 
 
 
 
-41- In current directory project create templates/home.html  -------------------------------------------------------------------------
+
+================================================================================================================
+41- In current directory project create templates/home.html
 home.html
 
 
 
-42- Add these codes in home.html  -------------------------------------------------------------------------
+
+================================================================================================================
+42- Add these codes in home.html
 {% extends '_base.html' %}
 {% block page_title %}
 Homepage-Startseite
@@ -334,18 +415,23 @@ Homepage-Startseite
 
 
 
-43- uncomment path signup in accounts/url.py -------------------------------------------------------------------------
+
+================================================================================================================
+43- uncomment path signup in accounts/url.py
 
 
 
-44- In accounts/url.py import -------------------------------------------------------------------------
+
+
+================================================================================================================
+44- In accounts/url.py import
 from . import views
 
 
 
 
-
-45- Create SignUpView class in accounts/views.py -------------------------------------------------------------------------
+================================================================================================================
+45- Create SignUpView class in accounts/views.py
 from django.views import generic
 from django.urls import reverse_lazy
 from .forms import CustomUserCreationForm
@@ -355,18 +441,24 @@ class SignUpView(generic.CreateView):
     success_url = reverse_lazy('login')
 
 
-46- In home.html Change this line --------------------------------------------------------------
+
+================================================================================================================
+46- In home.html Change this line
 <a href="{% url 'login' %}">Login</a> - <a href="{% url 'signup' %}">Signup</a>
 
 
 
 
-47- Create registration/signup.html file --------------------------------------------------------------
+
+================================================================================================================
+47- Create registration/signup.html file
 signup.html
 
 
 
-48- Add these codes in signup.html --------------------------------------------------------------
+
+================================================================================================================
+48- Add these codes in signup.html
 {% extends '_base.html' %}
 {% block page_title %}
 Signup-Anmeldung
@@ -381,63 +473,82 @@ Signup-Anmeldung
 
 
 
-49- In this link Check everything. should be shows signup table -------------------------------------------------------------------------
-http://localhost:8000/accounts/signup/
 
-
-
-50- In accounts/forms.py Change this line for class CustomUserCreationForm -------------------------------------------------------------------------
-fields = ('username', 'age', 'email', )
-
-
-
-51- In accounts/forms.py Change this line for class CustomUserChangeForm -------------------------------------------------------------------------
-fields = ('username', 'age', 'email', )
-
-
-
-
-52- Refresh browser and check should be add email field -------------------------------------------------------------------------
+================================================================================================================
+49- In this link Check everything. should be shows signup table
 http://localhost:8000/accounts/signup/
 
 
 
 
-53- Go to admin panel and check user added -------------------------------------------------------------------------
+
+================================================================================================================
+50- In accounts/forms.py Change this line for class CustomUserCreationForm
+fields = ('username', 'age', 'email', )
 
 
 
-54- create new app > In Terminal -------------------------------------------------------------------------
+
+================================================================================================================
+51- In accounts/forms.py Change this line for class CustomUserChangeForm
+fields = ('username', 'age', 'email', )
+
+
+
+
+
+================================================================================================================
+52- Refresh browser and check should be add email field
+http://localhost:8000/accounts/signup/
+
+
+
+
+================================================================================================================
+53- Go to admin panel and check user added
+
+
+
+
+================================================================================================================
+54- create new app > In Terminal
 python manage.py startapp pages
 
 
 
 
-55- Add to INSTALLED_APPS -------------------------------------------------------------------------
+
+================================================================================================================
+55- Add to INSTALLED_APPS
 'pages',
 
 
 
 
-56- create in pages/urls.py file  -------------------------------------------------------------------------
+================================================================================================================
+56- create in pages/urls.py file
 urls.py
 
 
 
 
-57- in config/urls.py Add this line -------------------------------------------------------------------------
+================================================================================================================
+57- in config/urls.py Add this line
 path('', include('pages.urls')),
 
 
 
 
-58- in config/urls.py Cut this line  -------------------------------------------------------------------------
+================================================================================================================
+58- in config/urls.py Cut this line
 path('home/', TemplateView.as_view(template_name='home.html'), name='home'),
 
 
 
 
-59- in pages/urls.py Paste clipboard -------------------------------------------------------------------------
+
+================================================================================================================
+59- in pages/urls.py Paste clipboard
 from django.urls import path
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
@@ -446,7 +557,9 @@ urlpatterns = [
 
 
 
-60- in pages/views.py -------------------------------------------------------------------------
+
+================================================================================================================
+60- in pages/views.py
 from django.views.generic.base import TemplateView
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -455,7 +568,9 @@ class HomePageView(TemplateView):
 
 
 
-61- in pages/tests.py -------------------------------------------------------------------------
+
+================================================================================================================
+61- in pages/tests.py
 from django.test import TestCase
 from django.urls import reverse
 class HomePageTests(TestCase):
@@ -465,7 +580,9 @@ class HomePageTests(TestCase):
 
 
 
-62- in Terminal write this and should be "OK" -------------------------------------------------------------------------
+
+================================================================================================================
+62- in Terminal write this and should be "OK"
 python manage.py test
 
 Output:
@@ -473,7 +590,7 @@ Output:
     Creating test database for alias 'default'...
     System check identified no issues (0 silenced).
     .
-    ----------------------------------------------------------------------
+    -
     Ran 1 test in 0.008s
     OK
     Destroying test database for alias 'default'...
@@ -483,7 +600,9 @@ Output:
 
 
 
-63- another test in pages/tests.py in previous class -------------------------------------------------------------------------
+
+================================================================================================================
+63- another test in pages/tests.py in previous class
     ...
     def test_home_page_content(self):
         response = self.client.get(reverse('home'))
@@ -493,7 +612,9 @@ Output:
 
 
 
-64- in Terminal write this and should be "OK" -------------------------------------------------------------------------
+
+================================================================================================================
+64- in Terminal write this and should be "OK"
 python manage.py test
 
 Output:
@@ -501,7 +622,8 @@ Output:
     Creating test database for alias 'default'...
     System check identified no issues (0 silenced).
     ..
-    ----------------------------------------------------------------------
+    ================================================================================================================
+    
     Ran 2 tests in 0.009s
     OK
     Destroying test database for alias 'default'...
@@ -509,7 +631,9 @@ Output:
 
 
 
-65- another test in pages/tests.py in previous class -------------------------------------------------------------------------
+
+================================================================================================================
+65- another test in pages/tests.py in previous class
     ...
     def test_home_page_url(self):
         response = self.client.get('/')
@@ -518,7 +642,9 @@ Output:
 
 
 
-66- in Terminal write this and should be "OK" -------------------------------------------------------------------------
+
+================================================================================================================
+66- in Terminal write this and should be "OK"
 python manage.py test
 
 Output:
@@ -526,7 +652,8 @@ Output:
     Creating test database for alias 'default'...
     System check identified no issues (0 silenced).
     ...
-    ----------------------------------------------------------------------
+    ================================================================================================================
+    
     Ran 3 tests in 0.010s
     OK
     Destroying test database for alias 'default'...
@@ -535,7 +662,9 @@ Output:
 
 
 
-67- another test in pages/tests.py in previous class -------------------------------------------------------------------------
+
+================================================================================================================
+67- another test in pages/tests.py in previous class
     ...
     def test_home_page_template_used(self):
         response = self.client.get(reverse('home'))
@@ -544,7 +673,9 @@ Output:
 
 
 
-68- in Terminal write this and should be "OK" -------------------------------------------------------------------------
+
+================================================================================================================
+68- in Terminal write this and should be "OK"
 python manage.py test
 
 Output:
@@ -552,7 +683,8 @@ Output:
     Creating test database for alias 'default'...
     System check identified no issues (0 silenced).
     ....
-    ----------------------------------------------------------------------
+    ================================================================================================================
+    
     Ran 4 tests in 0.015s
     OK
     Destroying test database for alias 'default'...
@@ -560,7 +692,9 @@ Output:
 
 
 
-69- in accounts/tests.py -------------------------------------------------------------------------
+
+================================================================================================================
+69- in accounts/tests.py
 from django.test import TestCase
 from django.urls import reverse
 class SignUpPageTests(TestCase):
@@ -570,7 +704,9 @@ class SignUpPageTests(TestCase):
         
 
 
-70- in Terminal write this and should be "OK" -------------------------------------------------------------------------
+
+================================================================================================================
+70- in Terminal write this and should be "OK"
 python manage.py test
 
 Output:
@@ -578,7 +714,8 @@ Output:
     Creating test database for alias 'default'...
     System check identified no issues (0 silenced).
     .....
-    ----------------------------------------------------------------------
+    ================================================================================================================
+    
     Ran 5 tests in 0.031s
     OK
     Destroying test database for alias 'default'...
@@ -586,7 +723,9 @@ Output:
 
 
 
-71- another test in accounts/tests.py in previous class -------------------------------------------------------------------------
+
+================================================================================================================
+71- another test in accounts/tests.py in previous class
     ...
     def test_signup_url(self):
         response = self.client.get('/accounts/signup/')
@@ -594,8 +733,8 @@ Output:
 
 
 
-
-72- in Terminal write this and should be "OK" -------------------------------------------------------------------------
+================================================================================================================
+72- in Terminal write this and should be "OK"
 python manage.py test
 
 Output:
@@ -603,7 +742,7 @@ Output:
     Creating test database for alias 'default'...
     System check identified no issues (0 silenced).
     ......
-    ----------------------------------------------------------------------
+    
     Ran 6 tests in 0.036s
     OK
     Destroying test database for alias 'default'...
@@ -611,13 +750,16 @@ Output:
 
 
 
-73- import to accounts/tests.py -------------------------------------------------------------------------
+================================================================================================================
+73- import to accounts/tests.py
 from django.contrib.auth import get_user_model
 
 
 
 
-74- another test in accounts/tests.py in previous class -------------------------------------------------------------------------
+
+================================================================================================================
+74- another test in accounts/tests.py in previous class
     ...
     def test_signup_form(self):
         user = get_user_model().objects.create_user(
@@ -631,7 +773,8 @@ from django.contrib.auth import get_user_model
 
 
 
-75- in Terminal write this and should be "OK" -------------------------------------------------------------------------
+================================================================================================================
+75- in Terminal write this and should be "OK"
 python manage.py test
 
 Output:
@@ -639,7 +782,7 @@ Output:
     Creating test database for alias 'default'...
     System check identified no issues (0 silenced).
     .......
-    ----------------------------------------------------------------------
+    
     Ran 7 tests in 0.050s
     OK
     Destroying test database for alias 'default'...
@@ -647,7 +790,8 @@ Output:
 
 
 
-76- First -> in accounts/tests.py in previous class -------------------------------------------------------------------------
+================================================================================================================
+76- First -> in accounts/tests.py in previous class
     username = 'SINA'
     email = 'email@gmail.com'
     ...
@@ -655,7 +799,9 @@ Output:
 
 
 
-77- Change in test method with name test_signup_form(self)  -------------------------------------------------------------------------
+
+================================================================================================================
+77- Change in test method with name test_signup_form(self)
     ...
     def test_signup_form(self):
         user = get_user_model().objects.create_user(
@@ -669,7 +815,8 @@ Output:
 
 
 
-78- in Terminal write this and should be "OK" -------------------------------------------------------------------------
+================================================================================================================
+78- in Terminal write this and should be "OK"
 python manage.py test
 
 Output:
@@ -681,19 +828,25 @@ Output:
 
 
 
-79- in Terminal write -------------------------------------------------------------------------
+
+================================================================================================================
+79- in Terminal write
 pipenv install django-crispy-forms
 
 
 
 
-80- in Terminal write -------------------------------------------------------------------------
+
+================================================================================================================
+80- in Terminal write
 pipenv requirements > requirements.txt 
 
 
 
 
-81- Check requirements.txt should like this -------------------------------------------------------------------------
+
+================================================================================================================
+81- Check requirements.txt should like this
 -i https://pypi.org/simple
 asgiref==3.7.2; python_version >= '3.7'
 django==5.0; python_version >= '3.10'
@@ -705,7 +858,9 @@ typing-extensions==4.9.0; python_version < '3.11'
 
 
 
-82- Change INSTALLED_APPS in config/settings.py like this -------------------------------------------------------------------------
+
+================================================================================================================
+82- Change INSTALLED_APPS in config/settings.py like this
 INSTALLED_APPS = [
     # Django Original
     'django.contrib.admin',
@@ -724,14 +879,18 @@ INSTALLED_APPS = [
 
 
 
-83- add this end of config/settings.py -------------------------------------------------------------------------
+
+================================================================================================================
+83- add this end of config/settings.py
 # crispy forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 
 
-84- in Terminal write -------------------------------------------------------------------------
+
+================================================================================================================
+84- in Terminal write
 pipenv install crispy-bootstrap4
 
 # Source: https://pypi.org/project/crispy-bootstrap4/
@@ -740,33 +899,40 @@ pipenv install crispy-bootstrap4
 
 
 
-85- add this in INSTALLED_APPS > config/settings.py -------------------------------------------------------------------------
+================================================================================================================
+85- add this in INSTALLED_APPS > config/settings.py
 ...
 'crispy_bootstrap4',
 
 
 
 
-86- in templates/registration/signup.html -------------------------------------------------------------------------
+================================================================================================================
+86- in templates/registration/signup.html
 {% load crispy_forms_tags %}
 
 
 
 
-87- Change line number 10, (form) in templates/registration/signup.html -------------------------------------------------------------------------
+
+================================================================================================================
+87- Change line number 10, (form) in templates/registration/signup.html
 {{ form|crispy }}
 
 
 
 
-88- Check site should change in this link: -------------------------------------------------------------------------
+
+================================================================================================================
+88- Check site should change in this link:
 http://127.0.0.1:8000/accounts/signup/
 
 
 
 
 
-89- Add this code in templates/_base.html in Head tag -------------------------------------------------------------------------
+================================================================================================================
+89- Add this code in templates/_base.html in Head tag
 ...
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -777,13 +943,17 @@ http://127.0.0.1:8000/accounts/signup/
 
 
 
-90- Check site should change in this link: -------------------------------------------------------------------------
+
+================================================================================================================
+90- Check site should change in this link:
 http://127.0.0.1:8000/accounts/signup/
 
 
 
 
-91- Change this in _base.html -------------------------------------------------------------------------
+
+================================================================================================================
+91- Change this in _base.html
 ...
 <body>
 <div class="container">
@@ -796,16 +966,24 @@ http://127.0.0.1:8000/accounts/signup/
 
 
 
-92- Check site should change in this link: -------------------------------------------------------------------------
+
+================================================================================================================
+92- Check site should change in this link: -
 http://127.0.0.1:8000/accounts/signup/
 
 
 
-93- in signup.html add class to button -------------------------------------------------------------------------
+
+
+================================================================================================================
+93- in signup.html add class to button -
 ...
 <button class="btn btn-success" type="submit">Sigup</button>
 ...
 
+
+
+
 ############                #####################################################
 ############                #####################################################
 ############ Password reset #####################################################
@@ -814,13 +992,17 @@ http://127.0.0.1:8000/accounts/signup/
 
 
 
-94- create in templates/registration/password_change_form.html --------------------------------
+
+================================================================================================================
+94- create in templates/registration/password_change_form.html --
 password_change_form.html
 
 
 
 
-95- Add sample text in password_change_form.html ----------------------------------------------
+
+================================================================================================================
+95- Add sample text in password_change_form.html 
 {% extends '_base.html' %}
 {% block content%}
 Password Change Here Sina!
@@ -829,7 +1011,9 @@ Password Change Here Sina!
 
 
 
-96- Login to site ++ Check this link should be explosion ------------------------------------------
+
+================================================================================================================
+96- Login to site ++ Check this link should be explosion --
 http://127.0.0.1:8000/accounts/password_change/
 
 Output:
@@ -838,20 +1022,25 @@ Output:
 
 
 
-97- add this to config/urls.py -----------------------------------------------------------------
+
+================================================================================================================
+97- add this to config/urls.py 
 # For reading this madule
 # from django.contrib.auth import urls
 
 
 
 
-98- Logout from site ++ Check this link should see django default reset password with email. ----------------
+
+================================================================================================================
+98- Logout from site ++ Check this link should see django default reset password with email. 
 http://127.0.0.1:8000/accounts/password_reset/ 
 
 
 
 
-99- Change code in templates/registration/password_change_form.html -------------------------------------------
+================================================================================================================
+99- Change code in templates/registration/password_change_form.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}
@@ -869,19 +1058,25 @@ Password Change
 
 
 
-100- Check this link should be change -----------------------------------------------------------------
+================================================================================================================
+100- Check this link should be change 
 http://127.0.0.1:8000/accounts/password_change/
 
 
 
 
-101- Create tis file in templates/registration/password_change_done.html -------------------------------------------
+
+
+================================================================================================================
+101- Create tis file in templates/registration/password_change_done.html 
 password_change_done.html
 
 
 
 
-102- add this code to password_change_done.html -----------------------------------------------------------------
+
+================================================================================================================
+102- add this code to password_change_done.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}
@@ -894,7 +1089,9 @@ Pass Changed
 
 
 
-103- in end of config/settings.py -----------------------------------------------------------------
+
+================================================================================================================
+103- in end of config/settings.py 
 # Email config
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBack
 
@@ -905,7 +1102,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBack
 
 
 
-104- Logout and Go in browser: -----------------------------------------------------------------
+
+================================================================================================================
+104- Logout and Go in browser: 
 http://127.0.0.1:8000/accounts/password_reset/
 
 Output:
@@ -924,25 +1123,31 @@ Output:
     Your username, in case you’ve forgotten: sina
     Thanks for using our site!
     The 127.0.0.1:8000 team
-    -------------------------------------------------------------------------------
+    
+    
     [11/Dec/2023 10:45:24] "POST /accounts/password_reset/ HTTP/1.1" 302 0
     [11/Dec/2023 10:45:24] "GET /accounts/password_reset/done/ HTTP/1.1" 200 3623
 
 
 
-105- Click on the link created in Terminal , like this ---------------------------------------------------------
+
+================================================================================================================
+105- Click on the link created in Terminal , like this
 http://127.0.0.1:8000/accounts/reset/MQ/set-password/
 
 
 
-106- Change password , if you change with true parameters browser will redirect to ---------------------------------------
+
+================================================================================================================
+106- Change password , if you change with true parameters browser will redirect to -
 http://127.0.0.1:8000/accounts/reset/done/
 
 
 
 
 
-107- create this file in templates/registration/... -----------------------------------------------------------------
+================================================================================================================
+107- create this file in templates/registration/... 
 password_reset_form.html
 password_reset_done.html
 password_reset_confirm.html
@@ -951,7 +1156,9 @@ password_reset_complete.html
 
 
 
-108- add this to password_change_form.html -----------------------------------------------------------------
+
+================================================================================================================
+108- add this to password_change_form.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}
@@ -969,13 +1176,18 @@ Password Reset
 
 
 
-109- Check this link should be change , followed by above codes ----------------------------------------
+
+================================================================================================================
+109- Check this link should be change , followed by above codes 
 http://127.0.0.1:8000/accounts/password_reset/
 
 
 
 
-110- add this to password_reset_done.html -----------------------------------------------------------------
+
+
+================================================================================================================
+110- add this to password_reset_done.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}
@@ -988,13 +1200,16 @@ Password Reset
 
 
 
-111- Check this link should be change you wrote above code ----------------------------------------------------
+
+================================================================================================================
+111- Check this link should be change you wrote above code -
 http://127.0.0.1:8000/accounts/password_reset/done/
 
 
 
 
-112- add this to password_reset_confirm.html -----------------------------------------------------------------
+================================================================================================================
+112- add this to password_reset_confirm.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}
@@ -1012,7 +1227,8 @@ Set new password
 
 
 
-113- add this to password_reset_complete.html -----------------------------------------------------------------
+================================================================================================================
+113- add this to password_reset_complete.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}
@@ -1028,14 +1244,17 @@ Password Reset
 
 
 
-114- after write good password you redirect to this link. should changed like previous code -------------
+
+================================================================================================================
+114- after write good password you redirect to this link. should changed like previous code 
 http://127.0.0.1:8000/accounts/reset/done/
 
 
 
 
 
-115- change this for login.html -----------------------------------------------------------------
+================================================================================================================
+115- change this for login.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}
@@ -1055,13 +1274,15 @@ Login-eingeben
 
 
 
-116- check this link should be changed to previous code ------------------------------------------------------
+================================================================================================================
+116- check this link should be changed to previous code
 http://127.0.0.1:8000/accounts/login/
 
 
 
 
-117- add this to after form to signup.html -----------------------------------------------------------------
+================================================================================================================
+117- add this to after form to signup.html 
 ...
 <a href="{% url 'login'%}" class="btn btn-sm btn-warning mt-3">Login</a>
 ...
@@ -1069,19 +1290,23 @@ http://127.0.0.1:8000/accounts/login/
 
 
 
-118- check this link should be changed -----------------------------------------------------------------
+================================================================================================================
+118- check this link should be changed 
 http://127.0.0.1:8000/accounts/signup/
 
 
 
 
-119- create this file in templates/registration/password_reset_email.html -----------------------------------------------------------------
+
+================================================================================================================
+119- create this file in templates/registration/password_reset_email.html 
 password_reset_email.html
 
 
 
 
-120- add this code to password_reset_email.html -----------------------------------------------------------------
+================================================================================================================
+120- add this code to password_reset_email.html 
 Hello, {{ user.username }}
 Someone just asked for password reset of this email: {{ email }}
 if it was true:
@@ -1091,7 +1316,10 @@ if you forgot your username: {{ user.username }}
 
 
 
-121- email reset again, check Terminal logs should be like this -----------------------------------------------
+
+
+================================================================================================================---
+121- email reset again, check Terminal logs should be like this
 
 Output:
     Content-Type: text/plain; charset="utf-8"
@@ -1107,7 +1335,8 @@ Output:
     if it was true:
     http://127.0.0.1:8000/accounts/reset/MQ/bz1ogx-86a93b0aa7151fb7c0474e7d12eb5c17/
     if you forgot your username: sina
-    ------------------------------------------------------------------------------- 
+    
+    
 
 ######################### ################# ##################################################
 #########################                   ##################################################
@@ -1116,19 +1345,25 @@ Output:
 #########################                   ##################################################
 
 
-122- in Terminal ------------------------------------------------------------------------------
+
+================================================================================================================
+122- in Terminal 
 python manage.py startapp books
 
 
 
 
-123- add it to config/settings.py > INSTALLED_APPS list ---------------------------------------------------
+
+
+================================================================================================================
+123- add it to config/settings.py > INSTALLED_APPS list 
 'books',
 
 
 
 
-124- create new model in books/models.py -------------------------------------------------------------------
+================================================================================================================
+124- create new model in books/models.py 
 ...
 class Book(models.Model):
     title = models.CharField(max_length=200)
@@ -1141,7 +1376,10 @@ class Book(models.Model):
 
 
 
-125- in terminal for this [ Model+(migrations) > migration+(migrate) > DB ] ---------------------------------------
+
+
+================================================================================================================
+125- in terminal for this [ Model+(migrations) > migration+(migrate) > DB ]
 python manage.py makemigrations books 
 
 Output:
@@ -1152,7 +1390,9 @@ Output:
 
 
 
-126- Check books/migrations/0001_initial.py like this ----------------------------------------------------------
+
+================================================================================================================
+126- Check books/migrations/0001_initial.py like this
 # Generated by Django 5.0 on 2023-12-11 13:41
 from django.db import migrations, models
 class Migration(migrations.Migration):
@@ -1173,7 +1413,10 @@ class Migration(migrations.Migration):
     ]
 
 
-127- in terminal write ------------------------------------------------------------------------------
+
+
+================================================================================================================
+127- in terminal write 
 python manage.py migrate
 
 Output:
@@ -1183,20 +1426,33 @@ Output:
         Applying books.0001_initial... OK
 
 
-128- add this to books/admin.py ------------------------------------------------------------------------------
+
+
+================================================================================================================
+128- add this to books/admin.py 
 from django.contrib import admin
 from .models import Book
 admin.site.register(Book)
 
 
-129- check admin panel should be added ----------------------------------------------------------------------
+
+
+
+================================================================================================================
+129- check admin panel should be added 
 http://127.0.0.1:8000/admin/
 
 
-130- add a book from admin panel ------------------------------------------------------------------------------
 
 
-131- add this in books/views.py ------------------------------------------------------------------------------
+================================================================================================================
+130- add a book from admin panel 
+
+
+
+
+================================================================================================================
+131- add this in books/views.py 
 from django.shortcuts import render
 from django.views import generic
 from .models import Book
@@ -1206,11 +1462,17 @@ class BookListView(generic.ListView):
     context_object_name = 'books'
 
 
-132- create urls.py in books directory --------------------------------------------------------------------
+
+
+================================================================================================================
+132- create urls.py in books directory 
 urls.py
 
 
-133-add this in books/urls.py ------------------------------------------------------------------------------
+
+
+================================================================================================================
+133-add this in books/urls.py 
 from django.urls import path
 from .views import BookListView
 urlpatterns = [
@@ -1218,15 +1480,28 @@ urlpatterns = [
 ]
 
 
-134- add this path to config/settings.py ---------------------------------------------------------------
+
+
+================================================================================================================-
+134- add this path to config/settings.py 
 ...
 path('books/', include('books.urls')),
 
 
-135- Create in books/templates/books/book_list.html --------------------------------------------------
 
 
-136- add this code to book_list.html ----------------------------------------------------------------
+
+
+================================================================================================================
+135- Create in books/templates/books/book_list.html
+
+
+
+
+
+
+================================================================================================================--
+136- add this code to book_list.html 
 {% extends '_base.html' %}
 {% block page_title %}Book list{% endblock %}
 {% block content%}
@@ -1238,25 +1513,41 @@ path('books/', include('books.urls')),
 {% endblock %}
 
 
-137- add another book in ------------------------------------------------------------------------------
+================================================================================================================
+137- add another book in 
 http://127.0.0.1:8000/admin/books/book/
 
 
-138- Check this link should be shows two title books -------------------------------------------------
+
+
+
+================================================================================================================
+138- Check this link should be shows two title books 
 http://127.0.0.1:8000/books/
 
 
-139- create this class to books/views.py  -------------------------------------------------------------
+
+
+
+
+================================================================================================================
+139- create this class to books/views.py  
 class BookDetailView(generic.DeleteView):
     model = Book
     template_name = 'books/book_detail.html'
     
 
-140- create this file books/templates/books/book_detail.html -------------------------------------------
+
+
+
+
+================================================================================================================
+140- create this file books/templates/books/book_detail.html 
 book_detail.html
 
 
-141- add these codes to book_detail.html ---------------------------------------------------------------
+================================================================================================================-
+141- add these codes to book_detail.html 
 {% extends '_base.html' %}
 {% block page_title %}{{book.title}}{% endblock %}
 {% block content%}
@@ -1268,36 +1559,60 @@ book_detail.html
 {% endblock %}
 
 
-142- add this path to books/urls.py ----------------------------------------------------------------------
+
+
+
+================================================================================================================
+142- add this path to books/urls.py 
 ...
 from .views import BookDetailView
 ...
 path('<int:pk>/', BookDetailView.as_view(), name='book_detail'),
 
 
-143- Check in browser this link, should be shows detail of book added -------------------------------------
+
+================================================================================================================
+143- Check in browser this link, should be shows detail of book added
 http://127.0.0.1:8000/books/1/
 OR
 http://127.0.0.1:8000/books/2/
 
 
-144- Check in title bar browser this link, should be change with title of book -----------------------------
+
+
+
+================================================================================================================
+144- Check in title bar browser this link, should be change with title of book
 http://127.0.0.1:8000/books/1/
 OR
 http://127.0.0.1:8000/books/2/
 
 
-145- import to books/models.py ------------------------------------------------------------------------------
+
+
+================================================================================================================
+145- import to books/models.py 
 from django.urls import reverse
 
 
-146- add this in class Book model > books/models.py ---------------------------------------------------------
+
+
+
+
+
+
+================================================================================================================
+146- add this in class Book model > books/models.py -
 ...
 def get_absolute_url(self):
     return reverse('book_detail', args=[self.id])
 
 
-147- change this part of book_list.html -----------------------------------------------------------------------
+
+
+
+================================================================================================================
+147- change this part of book_list.html 
 ...
 <a href="{{ book.get_absolute_url }}">
     <h1 class="mt-3">{{book.title}}</h1>
@@ -1305,28 +1620,46 @@ def get_absolute_url(self):
 ...
 
 
-148- create class for create view in books/views.py ----------------------------------------------------------
+
+
+
+================================================================================================================
+148- create class for create view in books/views.py --
 ...
 class BookCreateView(generic.CreateView):
     model = Book
     template_name = 'books/book_create.html'     
 
 
-149- Create this file books/templates/books/book_create.html --------------------------------------------------
+
+
+
+================================================================================================================
+149- Create this file books/templates/books/book_create.html -
 book_create.html
 
 
-150- add path to books/urls.py ------------------------------------------------------------------------------
+
+
+================================================================================================================
+150- add path to books/urls.py 
 ...
 path('create/', BookCreateView.as_view(), name="book_create"),
 
 
-151- add these to end of the book_list.html ------------------------------------------------------------------------
+
+
+================================================================================================================
+151- add these to end of the book_list.html 
 ...
 <a href="{% url 'book_create' %}" class="btn btn-success">Create New Book</a>
 
 
-152- add this in book_create.html ------------------------------------------------------------------------------
+
+
+
+================================================================================================================
+152- add this in book_create.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}Edit: {{book.title}}{% endblock %}
@@ -1340,11 +1673,19 @@ path('create/', BookCreateView.as_view(), name="book_create"),
 {% endblock %}
 
 
-153- add new book with this link ++ after created should be redirect ------------------------------------------------------------------------------
+
+
+
+================================================================================================================
+153- add new book with this link ++ after created should be redirect 
 http://127.0.0.1:8000/books/new/
 
 
-154- create class for update view in books/views.py ------------------------------------------------------------------------------
+
+
+
+================================================================================================================
+154- create class for update view in books/views.py 
 ...
 class BookUpdateView(generic.UpdateView):
     model = Book
@@ -1352,11 +1693,19 @@ class BookUpdateView(generic.UpdateView):
     template_name = 'books/book_update.html'
     
 
-155- create file books/templates/books/book_update.html ------------------------------------------------------------------------------
+
+
+
+================================================================================================================
+155- create file books/templates/books/book_update.html 
 book_update.html
 
 
-156- add these to book_update.html ------------------------------------------------------------------------------
+
+
+
+================================================================================================================
+156- add these to book_update.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}Edit: {{book.title}}{% endblock %}
@@ -1371,36 +1720,61 @@ book_update.html
 {% endblock %}
 
 
-157- import this in books/urls.py ------------------------------------------------------------------------------
+
+
+
+================================================================================================================
+157- import this in books/urls.py 
 from .views import BookUpdateView
 
 
-158- add path to books/urls.py ------------------------------------------------------------------------------ 
+
+
+
+================================================================================================================ 
+158- add path to books/urls.py 
 path('<int:pk>/edit', BookUpdateView.as_view(), name="book_update"),
 
 
-159- add button in book_detail.html ----------------------------------------------------------------------------
+
+
+================================================================================================================
+159- add button in book_detail.html 
 ...
 <a href="{% url 'book_update' book.id %}" class="btn btn-warning">Edit - bearbeiten</a>
 ...
 
 
-160- import this in first books/views.py ----------------------------------------------------------------------
+
+
+================================================================================================================
+160- import this in first books/views.py 
 from django.urls import reverse_lazy
 
 
-161- Create class Delete view in books/views.py  --------------------------------------------------------------
+
+
+
+================================================================================================================
+161- Create class Delete view in books/views.py  
 class BookDeleteView(generic.DeleteView):
     model = Book
     template_name = 'books/book_delete.html'
     success_url = reverse_lazy('book_list')
 
 
-162- Create this file books/templates/books/book_delete.html ---------------------------------------------------
+
+
+
+================================================================================================================
+162- Create this file books/templates/books/book_delete.html 
 book_delete.html
 
 
-163- add these codes to book_delete.html  ----------------------------------------------------------------------
+
+
+================================================================================================================
+163- add these codes to book_delete.html  
 {% extends '_base.html' %}
 {% block page_title %}Delete: {{book.title}}{% endblock %}
 {% block content%}
@@ -1415,72 +1789,141 @@ book_delete.html
 {% endblock %}
 
 
-164- add path to books/urls.py---------------------------------------------------------------------------------
+
+
+
+
+================================================================================================================
+164- add path to books/urls.py
 path('<int:pk>/delete/', BookDeleteView.as_view(), name='book_delete'),
 
 
-165- Check and Delete a book should be done without errors ----------------------------------------------------
+
+
+
+================================================================================================================
+165- Check and Delete a book should be done without errors
 
 
 
 ######################### Template Filters ###################################################### 
+######################### Template Filters ###################################################### 
+######################### Template Filters ###################################################### 
 
-166- change this for home.html ---------------------------------------------------------------------------------
+================================================================================================================
+166- change this for home.html 
 <h1 class="mt-3">Homepage-Startseite</h1>
 
 
-167- change to lower case all titles and author of books -------------------------------------------------------
 
 
-168- in book_list.html change this line -----------------------------------------------------------------------
+
+
+================================================================================================================--
+167- change to lower case all titles and author of books
+
+
+
+
+================================================================================================================
+168- in book_list.html change this line 
 <h1 class="mt-3">{{book.title|capfirst}}</h1>
 
 
-169- Check this link. All first letter of titles should be capital --------------------------------------------
+
+
+
+================================================================================================================
+169- Check this link. All first letter of titles should be capital
 http://localhost:8000/books/
 
 
-170- in book_detail.html change this line  --------------------------------------------------------------------
+
+
+
+
+================================================================================================================
+170- in book_detail.html change this line  
 <h1 class="mt-3">{{ book.title|capfirst }}</h1>
 
 
-171- Check above in this link, should be capital letter for title book ----------------------------------------
+
+
+
+================================================================================================================
+171- Check above in this link, should be capital letter for title book 
 http://localhost:8000/books/1/
 
 
-172- in book_list.html change this code -----------------------------------------------------------------------
+
+
+================================================================================================================
+172- in book_list.html change this code 
 <p>{{book.description|truncatewords:10 }}</p>
 
 
-173- Check this link, should limited description in 10 characters ---------------------------------------------
+
+
+
+================================================================================================================
+173- Check this link, should limited description in 10 characters 
 http://localhost:8000/books/
 
 
-174- in book_detail.html change this line ----------------------------------------------------------------------
+
+
+
+================================================================================================================
+174- in book_detail.html change this line 
 <p>Description: {{book.description|linebreaks}}</p>
 
 
-175- check this link should correct lines with Enter -----------------------------------------------------------
+
+================================================================================================================
+175- check this link should correct lines with Enter 
 http://localhost:8000/books/1/
 
 
-176- in book_detail.html change this line ----------------------------------------------------------------------
+
+================================================================================================================
+176- in book_detail.html change this line 
 <p>Author: {{book.author|title}}</p>
 
 
-177- check this link should be capital all words of Author -----------------------------------------------------
+
+
+
+================================================================================================================
+177- check this link should be capital all words of Author 
 http://localhost:8000/books/1/
 
 
+
+
+
+
+######################### Create New Template Filters ###################################################### 
+######################### Create New Template Filters ###################################################### 
+######################### Create New Template Filters ###################################################### 
 ######################### Create New Template Filters ###################################################### 
 
-178- create in books directory > templatetags/__init__.py  ----------------------------------------------------
 
 
-179- Create file in books/templatetags/book_tags.py -----------------------------------------------------------
+================================================================================================================
+
+178- create in books directory > templatetags/__init__.py 
 
 
-180- add this codes in book_tags.py ----------------------------------------------------------------------------
+
+
+================================================================================================================
+179- Create file in books/templatetags/book_tags.py 
+
+
+
+
+================================================================================================================
+180- add this codes in book_tags.py 
 from django import template
 register = template.Library()
 # Create Custom lowercase
@@ -1489,44 +1932,80 @@ def To_lowerCase(value):
     return value.lower()
 
 
-181- add this code to first book_detail.html ------------------------------------------------------------------
+================================================================================================================-
+181- add this code to first book_detail.html 
 ...
 {% load book_tags %}
 ...
 
 
-182- change this line in book_detail.html ----------------------------------------------------------------------
+
+
+
+================================================================================================================
+182- change this line in book_detail.html 
 <p>Description: {{book.description|To_lowerCase|linebreaks}}</p>
 
 
-183- Check this link should every letters of description to lower case -----------------------------------------
+
+
+
+
+================================================================================================================
+183- Check this link should every letters of description to lower case -
 http://localhost:8000/books/1/
 
 
+
+
+
+######################### The site Beautification ###################################################### 
+######################### The site Beautification ###################################################### 
+######################### The site Beautification ###################################################### 
 ######################### The site Beautification ###################################################### 
 
-184- change this line in config/settings.py -------------------------------------------------------------------
+================================================================================================================--
+184- change this line in config/settings.py 
 STATIC_URL = '/static/'
 
 
-185- add this code after STATIC_URL in config/settings.py ------------------------------------------------------
+
+
+================================================================================================================
+185- add this code after STATIC_URL in config/settings.py 
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
 
-186-  Create static directory in current project directory -----------------------------------------------------
+
+
+================================================================================================================
+186-  Create static directory in current project directory 
 static
 
 
-187- add fonts/*.ttf files to static directory ----------------------------------------------------------------
+
+================================================================================================================--
+187- add fonts/*.ttf files to static directory 
 
 
-188- add css/*.css files to static directory ------------------------------------------------------------------
 
 
-189- add icons/*.png files to static directory ----------------------------------------------------------------
+
+================================================================================================================-
+188- add css/*.css files to static directory 
 
 
-190- add nav tag from A file designed by the front-end to _base.html -------------------------------------------
+
+
+
+================================================================================================================--
+189- add icons/*.png files to static directory 
+
+
+
+
+================================================================================================================
+190- add nav tag from A file designed by the front-end to _base.html 
 <nav class="navbar navbar-expand-lg navbar-dark bg-info" dir="rtl">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -1549,11 +2028,13 @@ static
 </nav>
 
 
-191- Check this link should be added nav bar -----------------------------------------------------------------
+================================================================================================================
+191- Check this link should be added nav bar 
 http://localhost:8000/
 
 
-192- change entire head tag in _base.html ---------------------------------------------------------------------
+================================================================================================================-
+192- change entire head tag in _base.html 
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1565,7 +2046,8 @@ http://localhost:8000/
 
 
 
-193- add this to block content book_list.html -----------------------------------------------------------------
+================================================================================================================
+193- add this to block content book_list.html 
 <div class="container mt-4">
     <div class="row flex-row-reverse justify-content-md-center">
         <div class="card m-2" style="max-width: 45%">
@@ -1595,11 +2077,19 @@ http://localhost:8000/
 </footer>
 
 
-194- check this link should be added end of page --------------------------------------------------------------
+
+
+
+
+================================================================================================================
+194- check this link should be added end of page 
 http://localhost:8000/books/
 
 
-195- change book_list.html like this -----------------------------------------------------------------------
+
+
+================================================================================================================
+195- change book_list.html like this 
 {% extends '_base.html' %}
 {% block page_title %}Book list{% endblock %}
 {% block content%}
@@ -1639,16 +2129,23 @@ http://localhost:8000/books/
 
 
 
-196- add this in first Line _base.html ------------------------------------------------------------------------
+================================================================================================================
+196- add this in first Line _base.html 
 {% load static %}
 
 
 
-197- change this line in _base.html -----------------------------------------------------------------------------
+================================================================================================================
+197- change this line in _base.html -
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
-198- change all book_detail.html like this ----------------------------------------------------------------------
+
+
+
+
+================================================================================================================
+198- change all book_detail.html like this 
 {% extends '_base.html' %}
 {% load book_tags %}
 {% block page_title %}{{book.title}}{% endblock %}
@@ -1734,14 +2231,15 @@ http://localhost:8000/books/
 
 
 
-199- Check this link -------------------------------------------------------------------------------------------
+================================================================================================================
+199- Check this link 
 http://localhost:8000/books/1/
 http://localhost:8000/books/2/
 
 
 
-
-200- change book_create.html like this ------------------------------------------------------------------------
+================================================================================================================
+200- change book_create.html like this 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}Create{% endblock %}
@@ -1777,17 +2275,19 @@ http://localhost:8000/books/2/
 {% endblock %}
 
 
-
-201- Change this line in _base.html ----------------------------------------------------------------------------
+================================================================================================================
+201- Change this line in _base.html 
 <img src="{% static 'icons/book.png' %}" alt="" height="30"
 
 
 
-202- Check browser + Refresh should added book icon to first ----------------------------------------------------
+================================================================================================================
+202- Check browser + Refresh should added book icon to first 
 
 
 
-203- Change this line in _base.html ------------------------------------------------------------------------------
+================================================================================================================
+203- Change this line in _base.html 
 ...
 <a class="nav-link active" aria-current="page" href="{% url 'book_list' %}">Books</a>
 ...
@@ -1802,12 +2302,14 @@ http://localhost:8000/books/2/
 
 
 
-204- check this link in navbar should shows this text ----------------------------------------------------------
+================================================================================================================
+204- check this link in navbar should shows this text 
 Welcome YourCustomUserName 😎 Logout 
 
 
 
-205- Rechange this in _base.html ------------------------------------------------------------------------------
+================================================================================================================
+205- Rechange this in _base.html 
 {% if user.is_authenticated %}
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
@@ -1822,13 +2324,15 @@ Welcome YourCustomUserName 😎 Logout
 
 
 
-206- Rechange this with login.html ------------------------------------------------------------------------------
+================================================================================================================
+206- Rechange this with login.html 
 
 
 
 
 
-207- Rechange this for signup.html ------------------------------------------------------------------------------
+================================================================================================================
+207- Rechange this for signup.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}
@@ -1856,7 +2360,8 @@ Signup-Anmeldung
 
 
 
-208- Rechange in login.html ------------------------------------------------------------------------------
+================================================================================================================
+208- Rechange in login.html 
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block page_title %}
@@ -1890,14 +2395,16 @@ Login-eingeben
 
 
 
-209- add this in head tag _base.html ------------------------------------------------------------------------------
+================================================================================================================
+209- add this in head tag _base.html 
 {% block styles %}
 {% endblock %}
 
 
 
 
-210- add this is login.html ------------------------------------------------------------------------------
+================================================================================================================
+210- add this is login.html 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
@@ -1907,13 +2414,15 @@ Login-eingeben
 
 
 
-211- add this in first login.html ------------------------------------------------------------------------------
+================================================================================================================
+211- add this in first login.html 
 {% load static %}
 
 
 
 
-212- Rechange password_reset_form.html  ------------------------------------------------------------------------------
+================================================================================================================
+212- Rechange password_reset_form.html  
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
@@ -1957,19 +2466,22 @@ https://pypi.org/project/Pillow/
 https://pillow.readthedocs.io/en/stable/
 
 
-213- in Terminal write ----------------------------------------------------------------------------------------
+================================================================================================================
+213- in Terminal write 
 pipenv install pillow
 
 
 
 
-214- in Terminal write ----------------------------------------------------------------------------------------
+================================================================================================================
+214- in Terminal write 
 pipenv requirements > requirements.txt
 
 
 
 
-215- add this into settings.py  ----------------------------------------------------------------------------------------
+================================================================================================================
+215- add this into settings.py  
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 
@@ -1977,19 +2489,22 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 
 
 
-216- Create directory media ----------------------------------------------------------------------------------------
+================================================================================================================
+216- Create directory media 
 media\covers
 
 
 
 
-217- import in config/urls.py ----------------------------------------------------------------------------------------
+================================================================================================================
+217- import in config/urls.py 
 from django.conf.urls.static import static
 from django.conf import settings
 
 
 
-218- add this end of urlpatterns ----------------------------------------------------------------------------------------
+================================================================================================================
+218- add this end of urlpatterns 
 ...
 urlpatterns = [
 ...
@@ -1998,7 +2513,8 @@ urlpatterns = [
 
 
 
-219- add this in books/models.py in Book class  ----------------------------------------------------------------------------------------
+================================================================================================================
+219- add this in books/models.py in Book class  
 ...
 cover = models.ImageField(upload_to='covers/', blank=True)
 ...
@@ -2006,7 +2522,8 @@ cover = models.ImageField(upload_to='covers/', blank=True)
 
 
 
-220- in Terminal ----------------------------------------------------------------------------------------
+================================================================================================================
+220- in Terminal 
 python manage.py makemigrations
 
 Output:
@@ -2017,7 +2534,8 @@ Output:
 
 
 
-221- in Terminal ----------------------------------------------------------------------------------------
+================================================================================================================
+221- in Terminal 
 python manage.py migrate
 
 Output:
@@ -2030,7 +2548,8 @@ Output:
 
 
 
-222- go to this link or anothers  ----------------------------------------------------------------------------------------
+================================================================================================================
+222- go to this link or anothers  
 http://localhost:8000/admin/books/book/1/change/
 OR
 http://localhost:8000/admin/books/book/2/change/
@@ -2041,20 +2560,23 @@ http://localhost:8000/admin/books/book/3/change/
 
 
 
-223- Check item for Cover upload should be shows in browser ----------------------------------------------------------------------------------------
+================================================================================================================
+223- Check item for Cover upload should be shows in browser 
 
 
 
 
 
-224- Add image for your books ----------------------------------------------------------------------------------------
+================================================================================================================
+224- Add image for your books 
 
 
 
 
 
 
-225- Rechange this in book_detail.html ----------------------------------------------------------------------------------------
+================================================================================================================
+225- Rechange this in book_detail.html 
 ...
 <img src="{{ book.cover.url }}"
 ...
@@ -2063,7 +2585,8 @@ http://localhost:8000/admin/books/book/3/change/
 
 
 
-226- Rechange in book_list.html ----------------------------------------------------------------------------------------
+================================================================================================================
+226- Rechange in book_list.html 
 ...
 <img src="{{ book.cover.url }}"
 ...
@@ -2071,7 +2594,8 @@ http://localhost:8000/admin/books/book/3/change/
 
 
 
-227- add this to book_list.html & book_detail.html ----------------------------------------------------------------------------------------
+================================================================================================================
+227- add this to book_list.html & book_detail.html 
 ...
 {% if book.cover %}
     <img src="{{ book.cover.url }}" class="img-fluid rounded-start" alt="...">
@@ -2081,29 +2605,73 @@ http://localhost:8000/admin/books/book/3/change/
 
 
 
-228- ----------------------------------------------------------------------------------------
-229- ----------------------------------------------------------------------------------------
-230- ----------------------------------------------------------------------------------------
-231- ----------------------------------------------------------------------------------------
-232- ----------------------------------------------------------------------------------------
-233- ----------------------------------------------------------------------------------------
-234- ----------------------------------------------------------------------------------------
-235- ----------------------------------------------------------------------------------------
-236- ----------------------------------------------------------------------------------------
-237- ----------------------------------------------------------------------------------------
-238- ----------------------------------------------------------------------------------------
-239- ----------------------------------------------------------------------------------------
-240- ----------------------------------------------------------------------------------------
-241- ----------------------------------------------------------------------------------------
-242- ----------------------------------------------------------------------------------------
-243- ----------------------------------------------------------------------------------------
-244- ----------------------------------------------------------------------------------------
-245- ----------------------------------------------------------------------------------------
-246- ----------------------------------------------------------------------------------------
-247- ----------------------------------------------------------------------------------------
-248- ----------------------------------------------------------------------------------------
-249- ----------------------------------------------------------------------------------------
-250- ----------------------------------------------------------------------------------------
+
+================================================================================================================
+228- change this part of code in _base.html 
+...
+<a class="navbar-brand mx-3" href="/">Django Images</a>
+...
+
+
+
+
+
+
+================================================================================================================
+229- add 'cover' in books/views.py in class BookUpdateView 
+...
+class BookUpdateView(generic.UpdateView):
+    ...
+    fields = ['title', 'author', 'description', 'cover']
+    ...
+...
+
+
+
+
+
+================================================================================================================
+230- 
+================================================================================================================
+231- 
+================================================================================================================
+232- 
+================================================================================================================
+233- 
+================================================================================================================
+234- 
+================================================================================================================
+235- 
+================================================================================================================
+236- 
+================================================================================================================
+237- 
+================================================================================================================
+238- 
+================================================================================================================
+239- 
+================================================================================================================
+240- 
+================================================================================================================
+241- 
+================================================================================================================
+242- 
+================================================================================================================
+243- 
+================================================================================================================
+244- 
+================================================================================================================
+245- 
+================================================================================================================
+246- 
+================================================================================================================
+247- 
+================================================================================================================
+248- 
+================================================================================================================
+249- 
+================================================================================================================
+250- 
 
 
 
