@@ -2,7 +2,7 @@
 
 #### ############ ############  
 ####              ############  
-#### I use pipenv ############ 
+#### I use pipenv ############ `
 ####              ############  
 #### ############ ############ 
 
@@ -2631,47 +2631,76 @@ class BookUpdateView(generic.UpdateView):
 
 
 ================================================================================================================
-230- 
+230- Add shadow to class in tag in book_detail.html
+<img   src="{{ book.cover.url }}" class="shadow img-fluid rounded-start" alt="...">
+                                         -------
+
+
+
+
 ================================================================================================================
-231- 
+231- in books/views.py add this 'cover'
+...
+class BookCreateView(generic.CreateView):
+    model = Book
+    fields = ['title', 'author', 'description', 'price', 'cover']
+    #                                                    --------
+    template_name = 'books/book_create.html'    
+...
+
+
+
+
+
 ================================================================================================================
-232- 
+232- add this attribute in form tag book_create.html 
+                                  & book_update.html
+
+...
+<form method="POST" enctype="multipart/form-data">
+....
+
+
+
+
+
 ================================================================================================================
-233- 
-================================================================================================================
-234- 
-================================================================================================================
-235- 
-================================================================================================================
-236- 
-================================================================================================================
-237- 
-================================================================================================================
-238- 
-================================================================================================================
-239- 
-================================================================================================================
-240- 
-================================================================================================================
-241- 
-================================================================================================================
-242- 
-================================================================================================================
-243- 
-================================================================================================================
-244- 
-================================================================================================================
-245- 
-================================================================================================================
-246- 
-================================================================================================================
-247- 
-================================================================================================================
-248- 
-================================================================================================================
-249- 
-================================================================================================================
-250- 
+233- Rechange book_update.html
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block page_title %}Edit: {{ book.title }}{% endblock %}
+{% block content%}
+    <h1 class="mt-4 d-flex justify-content-center">Edit Book</h1>
+<div class="container mt-4" dir="rtl">
+    <div class="row">
+        <div class="col-9">
+            <div class="card shadow my-3">
+                <h5 class="card-header bg-success text-light px-5">Create New Book</h5>
+                <div class="px-5 pt-3 pb-5">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <button class="btn btn-warning mt-3" type="submit">Edit - Speichern</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+                <div class="card my-3 shadow">
+                    <h5 class="card-header bg-warning text-light">Guide - Führung</h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Enter the book information in the form on this page and then click on the save button.
+                            <br>
+                            Geben Sie die Buchinformationen in das Formular auf dieser Seite ein und klicken Sie dann auf die Schaltfläche „Speichern“.
+                        </p>
+                    </div>
+                </div>
+                <a href="{% url 'book_list' %}" class="btn btn-success">Back - zurück kommen</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
 
 
@@ -2679,5 +2708,394 @@ class BookUpdateView(generic.UpdateView):
 
 
 
+
+================================================================================================================
+234- Rechange book_create.html
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block page_title %}Create{% endblock %}
+{% block content%}
+<h1 class="mt-4 d-flex justify-content-center">Create New Book</h1>
+<div class="container mt-4" dir="rtl">
+    <div class="row">
+        <div class="col-9">
+            <div class="card shadow my-3">
+                <h5 class="card-header bg-success text-light px-5">Create New Book</h5>
+                <div class="px-5 pt-3 pb-5">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <button class="btn btn-success mt-3" type="submit">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+                <div class="card my-3 shadow">
+                    <h5 class="card-header bg-warning text-light">Guide - Führung</h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                            اطلاعات کتاب را در فرم این صفحه وارد کنید و سپس بر روی دکمه ذخیره کلیک کنید.
+                        </p>
+                        
+                    </div>
+                </div>
+                <a href="{% url 'book_list' %}" class="btn btn-success">Back - zurück kommen</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 
+
+
+
+
+
+
+
+================================================================================================================
+235- add this to books/views.py > into class BookListView 
+...
+paginate_by = 4 
+...
+
+
+
+
+
+
+
+================================================================================================================
+236- add this code to book_list.html > in end of page I prefer 
+...
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% endif %}
+        <li class="page-item"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        {% endif %}
+    </ul>
+</nav>
+...
+
+
+
+
+
+
+
+
+================================================================================================================
+237- Import into books/models.py
+from django.contrib.auth import get_user_model
+
+
+
+
+
+
+================================================================================================================
+238- Create new class for  'Comments' to books/models.py
+
+class Comment(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    text = models.TextField()
+    datetime_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user}: {self.text}'
+
+
+
+
+
+
+
+
+================================================================================================================
+239- in Terminal 
+python manage.py makemigrations 
+
+Output:
+    Migrations for 'books':
+      books/migrations/0003_comment.py
+        - Create model Comment
+
+
+
+
+
+
+================================================================================================================
+240- in Terminal 
+python manage.py migrate
+
+Output:
+    Operations to perform:
+      Apply all migrations: accounts, admin, auth, books, contenttypes, sessions
+    Running migrations:
+      Applying books.0003_comment... OK
+
+
+
+
+
+
+================================================================================================================
+241- add 'Comment' to books/admin.py 
+from .models import Comment
+
+
+
+
+
+
+================================================================================================================
+242- register Comment
+admin.site.register(Comment)
+
+
+
+
+
+
+================================================================================================================
+243- Check admin panel, Comment should be added
+http://localhost:8000/admin/ 
+
+
+
+
+
+
+
+================================================================================================================
+244- Go to this link and Check, should have added these
+     User + Book + Text
+
+http://localhost:8000/admin/books/comment/add/ 
+
+
+
+
+
+
+
+================================================================================================================
+245- Create this class in books/admin.py
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('user', 'book', 'text', 'datetime_created', )
+
+
+
+
+
+
+
+
+
+================================================================================================================
+246- update class of CommentAdmin in this line in books/admin.py
+admin.site.register(Comment, CommentAdmin)
+
+
+
+
+
+
+
+
+
+================================================================================================================
+247- Check this link should shows details and changing admin panel for Comments
+http://localhost:8000/admin/books/comment/
+
+
+
+
+
+
+
+
+
+================================================================================================================
+248- convert to plaintext this line in books/admin.py like this
+# admin.site.register(Comment, CommentAdmin)
+
+
+
+
+
+
+================================================================================================================
+249- add this above class CommentAdmin in books/admin.py
+@admin.register(Comment)
+
+
+
+
+
+
+
+================================================================================================================
+250- Check again this link, should be similar before
+http://localhost:8000/admin/books/comment/
+
+
+
+
+
+
+
+
+
+================================================================================================================
+251- add this to books/models.py > class Comment > book variable > related_name 
+book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comments')
+#                                                       --------------------------
+
+
+
+
+
+
+
+
+
+================================================================================================================
+252- in Terminal
+python manage.py makemigrations books
+
+Output:
+    Migrations for 'books':
+      books/migrations/0004_alter_comment_book.py
+        - Alter field book on comment
+
+
+
+
+
+
+================================================================================================================
+253- in Terminal
+python manage.py migrate
+
+Output:
+    Operations to perform:
+      Apply all migrations: accounts, admin, auth, books, contenttypes, sessions
+    Running migrations:
+      Applying books.0004_alter_comment_book... OK
+
+
+
+
+
+
+================================================================================================================
+254- Convert this class to text in books/views.py
+
+# class BookDetailView(generic.DeleteView):
+#     model = Book
+#     template_name = 'books/book_detail.html'
+
+
+
+
+
+
+
+
+================================================================================================================
+255- import this to books/views.py
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
+
+
+
+
+
+
+
+================================================================================================================
+256- add this function after line class BookDetailView
+
+def book_detail_view(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+
+    return render(request, 'books/book_detail.html', {'book': book})
+
+
+
+
+
+
+================================================================================================================
+257- Change like this, this line in books/urls.py
+# from .views import BookDetailView
+from .views import book_detail_view
+
+...
+path('<int:pk>/', book_detail_view, name='book_detail'),
+...
+
+
+
+
+
+
+
+
+
+================================================================================================================
+258- 
+
+
+
+
+
+
+
+================================================================================================================
+259-
+================================================================================================================
+260-
+================================================================================================================
+261-
+================================================================================================================
+262-
+================================================================================================================
+263-
+================================================================================================================
+264-
+================================================================================================================
+265-
+================================================================================================================
+266-
+================================================================================================================
+267-
+================================================================================================================
+268-
+================================================================================================================
+269-
+================================================================================================================
+270-
+================================================================================================================
+271-
+================================================================================================================
+272-
+================================================================================================================
+273-
+================================================================================================================
+274-
+================================================================================================================
+275-
+================================================================================================================
+276-
+================================================================================================================
+277-
 
 
