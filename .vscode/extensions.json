@@ -9,7 +9,6 @@
         "goplus.gop",
         "mongodb.mongodb-vscode",
         "ms-python.python",
-        "davidanson.vscode-markdownlint",
         "editorconfig.editorconfig",
         "tamasfe.even-better-toml"
     ]
