@@ -3711,7 +3711,9 @@ http://127.0.0.1:8000/books/new/
 
 ================================================================================================================
 297- add the LoginRequiredMixin to this class in books/views.py
-
+class BookUpdateView(LoginRequiredMixin,  generic.UpdateView):
+    ...
+    ...
 
 
 
@@ -3740,7 +3742,9 @@ http://127.0.0.1:8000/books/1/
 ================================================================================================================
 299- Try to Edit this book(Object or Post)
 
-You will jumped to this link right?
+
+You will be jump to this link right?
+
 
 Output:
 http://127.0.0.1:8000/accounts/login/?next=/books/1/edit/
@@ -3753,19 +3757,109 @@ http://127.0.0.1:8000/accounts/login/?next=/books/1/edit/
 
 
 ================================================================================================================
-300-
+300- add the LoginRequiredMixin to this class in books/views.py
+class BookDeleteView(LoginRequiredMixin,  generic.DeleteView):
+    ...
+    ...
+
+
+
+
+
+
+
+
+
+
+
+
 ================================================================================================================
-301-
+301- please logout and go to this link
+http://127.0.0.1:8000/books/1/
+
+
+
+
+
+
+
 ================================================================================================================
-302-
+302- Try to Delete this book(Object or Post)
+
+You will be jump to this link right?
+
+Output: 
+http://127.0.0.1:8000/accounts/login/?next=/books/1/delete/
+
+
+
+##################
+##################
+##################
+################## You should manage access in views not in links of html
+##################
+##################
+##################
+
+
 ================================================================================================================
-303-
+303- go this link and send comment (You should logout to see this err)
+
+Output:
+    ValueError at /books/1/
+
+
+
+
+
+
+
+
+
+
+
 ================================================================================================================
-304-
+304- import this to books/views.py
+from django.contrib.auth.decorators import login_required
+
+
+
+
+
+
+
+
+
+
+
+
 ================================================================================================================
-305-
+305- add this above of book_detail_view(request, pk)
+
+@login_required
+def book_detail_view(request, pk):
+    ...
+    ...
+
+
+
+
 ================================================================================================================
-306-
+306- Check again and send comment when you are logouted, should be jump to login page
+http://127.0.0.1:8000/books/
+
+go to a book you should jump to like this link:
+http://127.0.0.1:8000/accounts/login/?next=/books/1/
+
+
+
+
+
+
+
+
+
+
 ================================================================================================================
 307-
 ================================================================================================================
