@@ -1,0 +1,57 @@
+1- in Terminal
+hugo new site quickstart
+
+Output:
+    Congratulations! Your new Hugo site was created in /home/sina/01-Repo/Tests/2- Hugo Test/Acron/quickstart.
+    Just a few more steps...
+    1. Change the current directory to /home/sina/01-Repo/Tests/2- Hugo Test/Acron/quickstart.
+    2. Create or install a theme:
+    - Create a new theme with the command "hugo new theme <THEMENAME>"
+    - Install a theme from https://themes.gohugo.io/
+    3. Edit hugo.toml, setting the "theme" property to the theme name.
+    4. Create new content with the command "hugo new content <SECTIONNAME>/<FILENAME>.<FORMAT>".
+    5. Start the embedded web server with the command "hugo server --buildDrafts".
+    See documentation at https://gohugo.io/.
+=======================================================
+2- Verify that you have installed Hugo v0.112.0 or later. in Terminal
+hugo version
+
+Output for me:
+    hugo v0.120.4+extended linux/amd64 BuildDate=unknown
+=======================================================
+3- in Terminal
+cd quickstart
+=======================================================
+4- in Terminal
+git init
+
+Output:
+    hint: Using 'master' as the name for the initial branch. This default branch name
+    hint: is subject to change. To configure the initial branch name to use in all
+    hint: of your new repositories, which will suppress this warning, call:
+    hint: 
+    hint:   git config --global init.defaultBranch <name>
+    hint: 
+    hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+    hint: 'development'. The just-created branch can be renamed via this command:
+    hint: 
+    hint:   git branch -m <name>
+    Initialized empty Git repository in /home/any/any/any/any/any/quickstart/.git/
+=======================================================
+5- in Terminal
+git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+
+Output:
+    Cloning into '/home/any/any/any/any/any/quickstart/themes/ananke'...
+    remote: Enumerating objects: 2694, done.
+    remote: Counting objects: 100% (123/123), done.
+    remote: Compressing objects: 100% (70/70), done.
+    remote: Total 2694 (delta 61), reused 96 (delta 46), pack-reused 2571
+    Receiving objects: 100% (2694/2694), 4.52 MiB | 589.00 KiB/s, done.
+    Resolving deltas: 100% (1493/1493), done.
+=======================================================
+6- in Terminal
+echo "theme = 'ananke'" >> hugo.toml
+=======================================================
+7- in Terminal
+hugo server
