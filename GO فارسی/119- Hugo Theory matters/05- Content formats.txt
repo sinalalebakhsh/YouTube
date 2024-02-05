@@ -1,0 +1,30 @@
+https://gohugo.io/content-management/formats/#list-of-content-formats
+
+List of content formats
+
+The current list of content formats in Hugo:
+
+Name 	            Markup identifiers 	        Comment
+--------------      --------------------        ------------
+Goldmark 	        markdown, goldmark 	        Note that you can set the default handler of md and markdown to something else, see Configure Markup.
+Emacs Org-Mode 	    org 	                    See go-org.
+AsciiDoc 	        asciidocext, adoc, ad 	    Needs Asciidoctor installed.
+RST 	            rst 	                    Needs RST installed.
+Pandoc 	            pandoc, pdc 	            Needs Pandoc installed.
+HTML 	            html, htm 	                To be treated as a content file, with layout, shortcodes etc., it must have front matter. If not, it will be copied as-is.
+
+
+
+Learn markdown:
+    #-1
+    https://daringfireball.net/projects/markdown/
+
+    #-2
+    https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
+    #-3
+    https://www.markdowntutorial.com/
+
+    #-4
+    https://www.markdownguide.org/
+    

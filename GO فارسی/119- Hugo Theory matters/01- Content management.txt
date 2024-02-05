@@ -1,0 +1,18 @@
+Source:
+https://gohugo.io/content-management/organization/
+
+
+Without any additional configuration, the following will automatically work:
+.
+└── content
+    └── about
+    |   └── index.md  // <- https://example.org/about/
+    ├── posts
+    |   ├── firstpost.md   // <- https://example.org/posts/firstpost/
+    |   ├── happy
+    |   |   └── ness.md  // <- https://example.org/posts/happy/ness/
+    |   └── secondpost.md  // <- https://example.org/posts/secondpost/
+    └── quote
+        ├── first.md       // <- https://example.org/quote/first/
+        └── second.md      // <- https://example.org/quote/second/
+

@@ -1,0 +1,24 @@
+Leaf bundles
+
+A Leaf Bundle is a directory at any hierarchy within the content/ directory, that contains an index.md file.
+Examples of leaf bundle organization
+
+content/
+├── about
+│   ├── index.md
+├── posts
+│   ├── my-post
+│   │   ├── content1.md
+│   │   ├── content2.md
+│   │   ├── image1.jpg
+│   │   ├── image2.png
+│   │   └── index.md
+│   └── my-other-post
+│       └── index.md
+│
+└── another-section
+    ├── ..
+    └── not-a-leaf-bundle
+        ├── ..
+        └── another-leaf-bundle
+            └── index.md

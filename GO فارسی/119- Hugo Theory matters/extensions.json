@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        "beardedbear.beardedicons",
+        "beardedbear.beardedtheme",
+        "ms-python.black-formatter",
+        "streetsidesoftware.code-spell-checker",
+        "ms-azuretools.vscode-docker",
+        "editorconfig.editorconfig",
+        "golang.go",
+        "goplus.gop",
+        "budparr.language-hugo-vscode",
+        "davidanson.vscode-markdownlint",
+        "mongodb.mongodb-vscode",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "tomoki1207.pdf"
+    ]
+}

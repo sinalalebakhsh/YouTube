@@ -1,0 +1,16 @@
+Branch bundles
+
+
+Examples of branch bundle organization
+
+content/
+├── branch-bundle-1
+│   ├── branch-content1.md
+│   ├── branch-content2.md
+│   ├── image1.jpg
+│   ├── image2.png
+│   └── _index.md
+└── branch-bundle-2
+    ├── _index.md
+    └── a-leaf-bundle
+        └── index.md
