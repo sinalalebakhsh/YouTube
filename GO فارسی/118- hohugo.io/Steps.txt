@@ -1,0 +1,70 @@
+1- in Terminal
+hugo new site quickstart
+=======================================================
+2- in Terminal
+cd quickstart
+=======================================================
+3- in Terminal
+git init
+=======================================================
+4- in Terminal
+git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+=======================================================
+5- in Terminal
+echo "theme = 'ananke'" >> hugo.toml
+=======================================================
+6- in Terminal
+hugo server
+=======================================================
+7- in Browser , should be correct to show
+http://127.0.0.1:1313/
+=======================================================
+8- Press Ctrl + C to stop Hugo’s development server.
+=======================================================
+9- Add a new page to your site.
+hugo new content posts/my-first-post.md
+=======================================================
+10- content of my-first-post.md
++++
+title = 'My First Post'
+date = 2024-01-14T07:07:07+01:00
+draft = true
++++
+=======================================================
+11- Add this after current content my-first-post.md
+## Introduction
+
+This is **bold** text, and this is *emphasized* text.
+
+Visit the [Hugo](https://gohugo.io) website!
+=======================================================
+12- in Terminal
+hugo server --buildDrafts
+OR
+hugo server -D
+=======================================================
+13- check Browser link, should be correct to show
+http://127.0.0.1:1313/
+=======================================================
+14- Set the baseURL for your production site. This value must begin with the protocol and end with a slash, as shown above.
+in hugo.toml
+=======================================================
+15- Set the languageCode to your language and region.
+in hugo.toml
+=======================================================
+16- Set the title for your production site.
+in hugo.toml
+=======================================================
+17- in Terminal
+hugo server -D
+=======================================================
+18- check Browser link, should be correct to show
+http://127.0.0.1:1313/
+=======================================================
+19- 
+=======================================================
+=======================================================
+=======================================================
+=======================================================
+=======================================================
+=======================================================
