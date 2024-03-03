@@ -1,0 +1,3 @@
+baseURL = 'https://acronproject.com/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
