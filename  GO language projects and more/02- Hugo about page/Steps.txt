@@ -1,0 +1,36 @@
+1- in Terminal
+hugo new site AcronProject
+=====================================
+2- in Terminal
+cd AcronProject/
+=====================================
+3- create a file in layouts directory 
+index.html
+=====================================
+4- Create a file in content directory
+_index.md
+=====================================
+5- in Terminal
+hugo new about.md
+=====================================
+6- in Terminal
+mkdir layouts/_default/
+=====================================
+7- in Terminal (Copy/Paste this)
+cp layouts/index.html layouts/_default/single.html
+=====================================
+8- in Terminal
+hugo server
+=====================================
+9- in browser go to this link
+http://localhost:1313/about
+=====================================
+=====================================
+=====================================
+=====================================
+=====================================
+=====================================
+
+
+
+
