@@ -1,0 +1,55 @@
+1- in Terminal
+hugo new site portfolio
+
+Than:
+cd portfolio
+==================================================
+2- Create index.html in layouts directory
+index.html
+==================================================
+3- copy/paste these code inside layouts/index.html
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<title>{{ .Site.Title }}</title>
+</head>
+<body>
+<h1>{{ .Site.Title}}</h1>
+{{ .Content }}
+</body>
+</html>
+==================================================
+4- Create _index.md in Content directory
+_index.md
+==================================================
+5- content in _index.md
+This is my portfolio.
+On this site, you'll find
+* My biography
+* My projects
+* My résumé
+==================================================
+6-  in current directory write this
+hugo server
+==================================================
+7- in Terminal
+hugo new about.md
+==================================================
+8- in Terminal
+mkdir layouts/_default/
+==================================================
+9- in Terminal
+cp layouts/index.html layouts/_default/single.html
+==================================================
+10- modify this line in content/about.md like this
+draft = false
+==================================================
+11- in Terminal
+hugo server
+==================================================
+ go in this link in browser
+http://localhost:1313/about
+==================================================
+==================================================
+==================================================
