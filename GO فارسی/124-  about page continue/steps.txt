@@ -55,7 +55,7 @@ hugo server
 12- go in this link in browser
 http://localhost:1313/about
 ==================================================
-13- ➤ Open the single.html file in your editor and add the title like this:
+13- ➤ Open the layouts/_default/single.html file in your editor and add the title like this:
 <body>
     <h1>{{ .Site.Title}}</h1>
     <h2>{{ .Title }}</h2>
@@ -65,7 +65,11 @@ http://localhost:1313/about
 14- go in this link in browser
 http://localhost:1313/about
 ==================================================
-15- Building and Exploring Hugo’s Output --> in Terminal
+15- in Terminal
+Ctrl + C
+
+==================================================
+16- Building and Exploring Hugo’s Output --> in Terminal
 hugo
 
 Output: look at that directory’s contents, you’ll see these files and directories:
@@ -81,7 +85,7 @@ Output: look at that directory’s contents, you’ll see these files and direct
             └── index.xml
 
 ==================================================
-16- delete the entire public folder --> in Terminal
+17- delete the entire public folder --> in Terminal
 rm -r public && hugo
 
 OR:
@@ -89,7 +93,7 @@ use Hugo’s --cleanDestinationDir argument --> in Terminal
 hugo --cleanDestinationDir
 
 ==================================================
-17- minify the files it generates --> in Terminal
+18- minify the files it generates --> in Terminal
 hugo --cleanDestinationDir --minify
 
 Output: public/index.html now looks something like this
@@ -98,9 +102,6 @@ Output: public/index.html now looks something like this
     </head><body><h1>Brian's Portfolio</h1><p>This is my portfolio.</p>
     <p>On this site, you&rsquo;ll find</p><ul><li>My biography</li>
     <li>My projects</li><li>My résumé</li></ul></body></html>
-
-==================================================
-18-
 ==================================================
 19-
 ==================================================
