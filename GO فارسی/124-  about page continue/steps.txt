@@ -24,7 +24,7 @@ index.html
 _index.md
 ==================================================
 5- content in _index.md
-This is my portfolio.
+This is my portfolio
 On this site, you'll find
 * My biography
 * My projects
@@ -32,6 +32,10 @@ On this site, you'll find
 ==================================================
 6-  in current directory write this
 hugo server
+
+Than:
+Ctrl + C 
+
 ==================================================
 7- in Terminal
 hugo new about.md
