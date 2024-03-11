@@ -165,7 +165,13 @@ layouts
     # The index.html file is the home page of the site.
     # The _default directory contains the default layouts applied to single content pages (single.html)
     # pages that display lists of content pages (list.html)
-    
+
+==================================================
+            
+            
+                Generating the Theme
+
+
 ==================================================
 20- 
 ==================================================
