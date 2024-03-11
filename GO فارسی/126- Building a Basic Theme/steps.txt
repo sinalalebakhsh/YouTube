@@ -180,7 +180,27 @@ hugo new theme basic
 Output:
     Creating theme at ...portfolio/themes/basic
 
-    
+themes/basic/
+├── LICENSE
+├── archetypes
+│   └── default.md
+├── layouts
+│   ├── 404.html
+│   ├── _default
+│   │   ├── baseof.html
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── index.html
+│   └── partials
+│       ├── footer.html
+│       ├── head.html
+│       └── header.html
+├── static
+│   ├── css
+│   └── js
+└── theme.toml
+
+
 ==================================================
 21- 
 ==================================================
