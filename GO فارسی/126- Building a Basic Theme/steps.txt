@@ -171,9 +171,16 @@ layouts
             
                 Generating the Theme
 
+Hugo has a built-in theme generator that creates everything you need for your theme.
 
 ==================================================
-20- 
+20- in Terminal
+hugo new theme basic
+
+Output:
+    Creating theme at ...portfolio/themes/basic
+
+    
 ==================================================
 21- 
 ==================================================
