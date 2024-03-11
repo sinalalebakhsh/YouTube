@@ -126,6 +126,9 @@ hugo new resume.md
 -----------------------------------
 19-4 
     run the development web server , Navigate to http://localhost:1313/resume to view the page
+
+    in Terminal:
+    hugo server
 -----------------------------------
 19-5
     Change the draft state to false in the default archetype
@@ -133,9 +136,12 @@ hugo new resume.md
 19-6
     generate a fourth page called contact.md
 
+    in Terminal:
+    hugo new contact.md
+
 Output:
     This new page will now have the draft state set to false
-    All future pages you create with the "hugo new command" 
+    All future pages you create with the "hugo new ..." command 
     will now have this status set.
 
 -----------------------------------
