@@ -30,7 +30,7 @@ On this site, you'll find
 * My projects
 * My résumé
 ==================================================
-6-  in current directory write this
+6- in current directory write this
 hugo server
 
 Than:
@@ -202,7 +202,9 @@ themes/basic/
 
 
 ==================================================
-21- 
+21- Move your existing layout files into this new theme --> in Terminal
+mv layouts/index.html themes/basic/layouts/index.html
+mv layouts/_default/single.html themes/basic/layouts/_default/single.html
 ==================================================
 22- 
 ==================================================
