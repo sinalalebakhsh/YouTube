@@ -29,6 +29,7 @@ hugo --cleanDestinationDir
 21- Move your existing layout files into this new theme ➤➤➤➤ in Terminal 
 ➤➤➤➤ mv layouts/index.html themes/basic/layouts/index.html
 ➤➤➤➤ mv layouts/_default/single.html themes/basic/layouts/_default/single.html
+22- Open config.toml and add the following line to the end: 
 
 
 ➤➤➤➤
