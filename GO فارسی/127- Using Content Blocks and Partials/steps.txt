@@ -1,0 +1,229 @@
+1- in Terminal
+hugo new site portfolio
+
+Than:
+cd portfolio
+==================================================
+2- Create index.html in layouts directory
+index.html
+==================================================
+3- copy/paste these code inside layouts/index.html
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<title>{{ .Site.Title }}</title>
+</head>
+<body>
+<h1>{{ .Site.Title}}</h1>
+{{ .Content }}
+</body>
+</html>
+==================================================
+4- Create _index.md in Content directory
+_index.md
+==================================================
+5- content in _index.md
+This is my portfolio
+On this site, you'll find
+* My biography
+* My projects
+* My résumé
+==================================================
+6- in current directory write this
+hugo server
+
+Than:
+Ctrl + C 
+
+==================================================
+7- in Terminal
+hugo new about.md
+==================================================
+8- in Terminal
+mkdir layouts/_default/
+==================================================
+9- in Terminal
+cp layouts/index.html layouts/_default/single.html
+==================================================
+10- modify this line in content/about.md like this
+draft = false
+==================================================
+11- in Terminal
+hugo server
+==================================================
+12- go in this link in browser
+http://localhost:1313/about
+==================================================
+13- ➤ Open the layouts/_default/single.html file in your editor and add the title like this:
+<body>
+    <h1>{{ .Site.Title}}</h1>
+    <h2>{{ .Title }}</h2>
+    {{ .Content }}
+</body>
+==================================================
+14- go in this link in browser
+http://localhost:1313/about
+==================================================
+15- in Terminal
+Ctrl + C
+
+==================================================
+16- Building and Exploring Hugo’s Output --> in Terminal
+hugo
+
+Output: look at that directory’s contents, you’ll see these files and directories:
+    public/
+        ├── about
+        │   └── index.html
+        ├── categories
+        │   └── index.xml
+        ├── index.html
+        ├── index.xml
+        ├── sitemap.xml
+        └── tags
+            └── index.xml
+
+==================================================
+17- delete the entire public folder --> in Terminal
+rm -r public && hugo
+
+OR:
+use Hugo’s --cleanDestinationDir argument --> in Terminal
+hugo --cleanDestinationDir
+
+==================================================
+18- minify the files it generates --> in Terminal
+hugo --cleanDestinationDir --minify
+
+Output: public/index.html now looks something like this
+    <!doctype html><html lang=en-us><head><meta name=generator
+    content="Hugo 0.68.3"><meta charset=utf-8><title>Brian's Portfolio</title>
+    </head><body><h1>Brian's Portfolio</h1><p>This is my portfolio.</p>
+    <p>On this site, you&rsquo;ll find</p><ul><li>My biography</li>
+    <li>My projects</li><li>My résumé</li></ul></body></html>
+==================================================
+
+
+    125- Practice for gain your Hugo skill
+
+
+==================================================
+19- Create a 'Résumé' page
+“Résumé”
+
+in Terminal:
+hugo new resume.md
+
+19-1 
+    Open the content/resume.md file in your editor update the generated title from “Resume” to 'Résumé'
+-----------------------------------
+19-2 
+    set the draft status to false
+-----------------------------------
+19-3 
+    Fill in some content
+-----------------------------------
+19-4 
+    run the development web server , Navigate to http://localhost:1313/resume to view the page
+
+    in Terminal:
+    hugo server
+-----------------------------------
+19-5
+    Change the draft state to false in the default archetype
+-----------------------------------
+19-6
+    generate a fourth page called contact.md
+
+    in Terminal:
+    hugo new contact.md
+
+Output:
+    This new page will now have the draft state set to false
+    All future pages you create with the "hugo new ..." command 
+    will now have this status set.
+
+-----------------------------------
+-----------------------------------
+-----------------------------------
+
+==================================================
+
+        126- Building a Basic Theme
+
+==================================================
+
+A basic Hugo theme only needs these files:
+
+layouts
+├── _default
+│   ├── list.html
+│   └── single.html
+└─── index.html
+
+    # The index.html file is the home page of the site.
+    # The _default directory contains the default layouts applied to single content pages (single.html)
+    # pages that display lists of content pages (list.html)
+
+==================================================
+            
+            
+                Generating the Theme
+
+Hugo has a built-in theme generator that creates everything you need for your theme.
+
+==================================================
+20- in Terminal
+hugo new theme basic
+
+Output:
+    Creating theme at ...portfolio/themes/basic
+
+themes/basic/
+├── LICENSE
+├── archetypes
+│   └── default.md
+├── layouts
+│   ├── 404.html
+│   ├── _default
+│   │   ├── baseof.html
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── index.html
+│   └── partials
+│       ├── footer.html
+│       ├── head.html
+│       └── header.html
+├── static
+│   ├── css
+│   └── js
+└── theme.toml
+
+
+==================================================
+21- Move your existing layout files into this new theme --> in Terminal
+mv layouts/index.html themes/basic/layouts/index.html
+mv layouts/_default/single.html themes/basic/layouts/_default/single.html
+==================================================
+you have to tell Hugo about it by adding a line to your site’s configuration.
+22- Open config.toml and add the following line to the end: 
+theme = "basic"
+==================================================
+23- in Terminal
+hugo server
+==================================================
+24-
+==================================================
+25-
+==================================================
+26-
+==================================================
+27-
+==================================================
+28-
+==================================================
+29-
+==================================================
+==================================================
+==================================================
