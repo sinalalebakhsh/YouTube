@@ -1,7 +1,14 @@
 #!/bin/bash
 git add .
 git commit -m " GO فارسی
-126- Building a Basic Theme
+======================================================
+    
+    
+        127- Using Content Blocks and Partials
+
+        
+======================================================
+
 1- in Terminal ➤➤➤➤ hugo new site portfolio
 Then ➤➤➤➤ cd portfolio
 2- Create index.html in layouts directory ➤➤➤➤ index.html
