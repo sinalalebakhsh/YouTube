@@ -29,6 +29,8 @@ Then ➤➤➤➤ cd portfolio
 17- delete the entire public folder ➤➤➤➤ in Terminal  ➤➤➤➤  rm -r public && hugo
 OR:
 
+
+
 use Hugo's --cleanDestinationDir argument ➤➤➤➤ in Terminal
 hugo --cleanDestinationDir
 18- minify the files it generates ➤➤➤➤ in Terminal  ➤➤➤➤ hugo --cleanDestinationDir --minify
