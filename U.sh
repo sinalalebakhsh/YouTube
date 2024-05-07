@@ -43,6 +43,11 @@ hugo --cleanDestinationDir
 23- in Terminal --> hugo server
 24- Open themes/basic/layouts/partials/head.html and Replace this codes
 25- in Terminal
+26- open the file themes/basic/layouts/partials/header.html and Replace these
+27- create the footer of the site by opening themes/basic/layouts/_default/partials/footer.html
+28- Open themes/basic/layouts/index.html and replace the contents with this code basic_theme/portfolio/themes/basic/layouts/index.html
+29- modify the code in themes/basic/layouts/_default/single.html so the single page layout works the same way: basic_theme/portfolio/themes/basic/layouts/_default/single.html
+30-  in Terminal
 
 
 ➤➤➤➤

@@ -233,13 +233,45 @@ http://localhost:1313/
 http://localhost:1313/about
 
 ==================================================
-26-
+26- open the file themes/basic/layouts/partials/header.html and Replace these
+<h1>{{ site.Title }}</h1>
+{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<header>
+    <h1>{{ .Site.Title }}</h1>
+</header>
+<nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+</nav>
+
 ==================================================
-27-
+27- create the footer of the site by opening themes/basic/layouts/_default/partials/footer.html
+<footer>
+    <small>Copyright {{now.Format "2006"}} Me.</small>
+</footer>
+
 ==================================================
-28-
+28- Open themes/basic/layouts/index.html and replace the contents with this code basic_theme/portfolio/themes/basic/layouts/index.html
+{{ define "main" }}
+    {{ .Content }}
+{{ end }}
+
 ==================================================
-29-
+29- modify the code in themes/basic/layouts/_default/single.html so the single page layout works the same way: basic_theme/portfolio/themes/basic/layouts/_default/single.html
+{{ define "main" }}
+    <h2>{{ .Title }}</h2>
+    <h2>SINA</h2>
+    {{ .Content }}
+
+{{ end }}
+
 ==================================================
+30-  in Terminal
+hugo server
+
+Check this link and titles of they:
+http://localhost:1313/
+http://localhost:1313/about
+
 ==================================================
 ==================================================
