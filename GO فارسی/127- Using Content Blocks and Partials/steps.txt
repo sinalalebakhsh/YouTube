@@ -212,10 +212,26 @@ theme = "basic"
 ==================================================
 23- in Terminal
 hugo server
+
+Check this link:
+http://localhost:1313/
+
 ==================================================
-24- Open themes/basic/layouts/partials/head.html
+24- Open themes/basic/layouts/partials/head.html and Replace this codes
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ .Site.Title }}</title>
+</head>
+
 ==================================================
-25-
+25- in Terminal
+hugo server
+
+Check this link and titles of they:
+http://localhost:1313/
+http://localhost:1313/about
+
 ==================================================
 26-
 ==================================================

@@ -41,6 +41,8 @@ hugo --cleanDestinationDir
 ➤➤➤➤ mv layouts/_default/single.html themes/basic/layouts/_default/single.html
 22- Open config.toml and add the following line to the end: 
 23- in Terminal --> hugo server
+24- Open themes/basic/layouts/partials/head.html and Replace this codes
+25- in Terminal
 
 
 ➤➤➤➤
