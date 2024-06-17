@@ -36,15 +36,7 @@ http://localhost:1313/about/
 http://localhost:1313/resume/
 http://localhost:1313/contact
 ==================================================➤
-13- acronProject/themes/basic/content
-+++
-title = 'Home'
-date = 2023-01-01T08:00:00-07:00
-draft = false
-+++
-
-My name is Sina Lalehbakhsh.
-
+13- 
 ==================================================➤
 14- 
 ==================================================➤
