@@ -24,8 +24,10 @@ index.html
 _index.md
 ==================================================
 5- content in _index.md
-This is my portfolio
+# My Layouts is here
+
 On this site, you'll find
+
 * My biography
 * My projects
 * My résumé
