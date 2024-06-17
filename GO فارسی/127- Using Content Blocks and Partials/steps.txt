@@ -58,11 +58,20 @@ hugo server
 http://localhost:1313/about
 ==================================================
 13- ➤ Open the layouts/_default/single.html file in your editor and add the title like this:
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ .Site.Title }}</title>
+</head>
+
 <body>
     <h1>{{ .Site.Title}}</h1>
     <h2>{{ .Title }}</h2>
     {{ .Content }}
 </body>
+</html>
 ==================================================
 14- go in this link in browser
 http://localhost:1313/about
