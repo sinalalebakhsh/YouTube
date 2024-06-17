@@ -1,199 +1,60 @@
 1- in Terminal
-hugo new site portfolio
+hugo new site acronProject
 ==================================================➤
 2-
 cd portfolio
 ==================================================➤
-3- Create index.html in layouts directory
-index.html
-==================================================➤
-4- paste these code inside layouts/index.html
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-<meta charset="utf-8">
-<title>{{ .Site.Title }}</title>
-</head>
-<body>
-<h1>{{ .Site.Title}}</h1>
-{{ .Content }}
-</body>
-</html>
-==================================================➤
-5- Create _index.md in Content directory
-_index.md
-==================================================➤
-6- content in _index.md
-# Home
-
-On this site, you'll find
-
-* My biography
-* My projects
-* My résumé
-==================================================➤
-7- Test it
-hugo server
-==================================================➤
-8- Shutdown 
-Ctrl + C 
-==================================================➤
-9- in Terminal
-hugo new about.md
-==================================================➤
-10- in Terminal
-mkdir layouts/_default/
-==================================================➤
-==================================================➤
-11- in Terminal
-cp layouts/index.html layouts/_default/single.html
-==================================================➤
-12- modify this line in content/about.md like this
-draft = false
-==================================================➤
-13- in Terminal
-hugo server
-==================================================➤
-14- Test it
-http://localhost:1313/about
-==================================================➤
-15- Open the layouts/_default/single.html file in your editor and add the title like this:
-<!DOCTYPE html>
-<html lang="en-US">
-
-<head>
-    <meta charset="utf-8">
-    <title>{{ .Site.Title }}</title>
-</head>
-
-<body>
-    <h1>{{ .Site.Title}}</h1>
-    <h2>{{ .Title }}</h2>
-    {{ .Content }}
-</body>
-</html>
-==================================================➤
-14- go in this link in browser
-http://localhost:1313/about
-==================================================➤
-        126- Building a Basic Theme
-==================================================➤
-
-A basic Hugo theme only needs these files:
-
-layouts
-├── _default
-│   ├── list.html
-│   └── single.html
-└─── index.html
-
-    # The index.html file is the home page of the site.
-    # The _default directory contains the default layouts applied to single content pages (single.html)
-    # pages that display lists of content pages (list.html)
-==================================================➤
-            
-                Generating the Theme
-
-Hugo has a built-in theme generator that creates everything you need for your theme.
-==================================================➤
-20- in Terminal
+3- 
 hugo new theme basic
-
-Output:
-    Creating theme at ...portfolio/themes/basic
-
-themes/basic/
-├── LICENSE
-├── archetypes
-│   └── default.md
-├── layouts
-│   ├── 404.html
-│   ├── _default
-│   │   ├── baseof.html
-│   │   ├── list.html
-│   │   └── single.html
-│   ├── index.html
-│   └── partials
-│       ├── footer.html
-│       ├── head.html
-│       └── header.html
-├── static
-│   ├── css
-│   └── js
-└── theme.toml
-
+==================================================➤
+4- 
+==================================================➤
+5- 
+==================================================➤
+6- 
 
 ==================================================➤
-21- Move your existing layout files into this new theme --> in Terminal
-mv layouts/index.html themes/basic/layouts/index.html
-mv layouts/_default/single.html themes/basic/layouts/_default/single.html
+7-
 ==================================================➤
-you have to tell Hugo about it by adding a line to your site’s configuration.
-22- Open config.toml and add the following line to the end: 
-theme = "basic"
+8-
 ==================================================➤
-23- in Terminal
-hugo server
-
-Check this link:
-http://localhost:1313/
-
+9-
 ==================================================➤
-24- Open themes/basic/layouts/partials/head.html and Replace this codes
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ .Site.Title }}</title>
-</head>
-
+10-
 ==================================================➤
-25- in Terminal
-hugo server
-
-Check this link and titles of they:
-http://localhost:1313/
-http://localhost:1313/about
-
+11-
 ==================================================➤
-26- open the file themes/basic/layouts/partials/header.html and Replace these
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-<header>
-    <h1>{{ .Site.Title }}</h1>
-</header>
-<nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-</nav>
-
+12-
 ==================================================➤
-27- create the footer of the site by opening themes/basic/layouts/_default/partials/footer.html
-<footer>
-    <small>Copyright {{now.Format "2006"}} Me.</small>
-</footer>
-
+13-
 ==================================================➤
-28- Open themes/basic/layouts/index.html and replace the contents with this code basic_theme/portfolio/themes/basic/layouts/index.html
-{{ define "main" }}
-    {{ .Content }}
-{{ end }}
-
+14- 
 ==================================================➤
-29- modify the code in themes/basic/layouts/_default/single.html so the single page layout works the same way: basic_theme/portfolio/themes/basic/layouts/_default/single.html
-{{ define "main" }}
-    <h2>{{ .Title }}</h2>
-    <h2>AcronSina</h2>
-    {{ .Content }}
-
-{{ end }}
-
+15-    
 ==================================================➤
-30-  in Terminal
-hugo server
-
-Check this link and titles of they:
-http://localhost:1313/
-http://localhost:1313/about
-
+14- 
 ==================================================➤
+20-
+==================================================➤
+21-
+==================================================➤
+22-
+==================================================➤
+23-
+==================================================➤
+24- 
+==================================================➤
+25-
+==================================================➤
+26- 
+==================================================➤
+27- 
+==================================================➤
+28-
+==================================================➤
+29-
+==================================================➤
+30-
+==================================================➤
+31-
 ==================================================➤
