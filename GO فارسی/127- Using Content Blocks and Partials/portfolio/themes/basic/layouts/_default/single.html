@@ -7,8 +7,12 @@
 </head>
 
 <body>
-    <h1>{{ .Site.Title}}</h1>
+    {{ define "main" }}
+    <h2>{{ .Title }}</h2>
+    <h2>AcronSina</h2>
     {{ .Content }}
+
+    {{ end }}
 </body>
 
 </html>
